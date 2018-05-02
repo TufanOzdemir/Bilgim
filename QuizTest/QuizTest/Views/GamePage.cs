@@ -1,4 +1,5 @@
 ﻿using QuizTest.Constant;
+using QuizTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,11 +10,11 @@ namespace QuizTest.Views
     public class GamePage : ContentPage
     {
         Label _lblTime;
-        Game game;
-        public GamePage(int currentQuestion, Game game)
+        Game _game;
+        public GamePage(Game game)
         {
             _lblTime = new Label();
-            this.game = game;
+            _game = game;
             ComponentLoad();
         }
 
@@ -35,7 +36,7 @@ namespace QuizTest.Views
                 if (time == 0.00)
                 {
                     DisplayAlert("Süre Doldu", "Geri sayım süresi bitti!", "Tamam");
-                    game.IsTimeOut = true;
+                    _game.IsTimeOut = true;
                     Last();
                     return false;
                 }

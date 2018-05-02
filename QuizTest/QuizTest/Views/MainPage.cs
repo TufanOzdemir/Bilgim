@@ -1,4 +1,5 @@
 ﻿using QuizTest.Constant;
+using QuizTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,8 +9,11 @@ namespace QuizTest.Views
 {
     public class MainPage : ContentPage
     {
+
+        GameService _gameService;
         public MainPage()
         {
+            _gameService = new GameService();
             ComponentLoad();
         }
 
@@ -22,8 +26,8 @@ namespace QuizTest.Views
 
         private async void StartGame(object obj)
         {
-            Game game = new Game();
-            await Navigation.PushAsync(new GamePage(1,game));
+            Game game = _gameService.StartNewGame();
+            await Navigation.PushAsync(new GamePage(game));
         }
     }
 }
