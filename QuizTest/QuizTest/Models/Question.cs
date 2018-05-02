@@ -15,6 +15,9 @@ namespace QuizTest.Models
 
         [NotNull]
         public QuestionDifficult Difficult { get; set; }
+
+        [NotNull]
+        public int Time { get; set; }
     }
 
     public enum QuestionDifficult
