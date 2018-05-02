@@ -1,5 +1,6 @@
 ﻿using QuizTest.Data;
 using QuizTest.Models;
+using QuizTest.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,10 @@ namespace QuizTest.Services
             {
                 return new Question();
             }
+        }
+        public List<QuestionAnswerViewModel> GetQuestionListWithAnswerList()
+        {
+
         }
     }
 }

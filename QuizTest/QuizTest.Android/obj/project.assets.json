@@ -761,40 +761,36 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amoni\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
+    "C:\\Users\\Batu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\QuizTest.Android\\QuizTest.Android.csproj",
+      "projectUniqueName": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest.Android\\QuizTest.Android.csproj",
       "projectName": "QuizTest.Android",
-      "projectPath": "C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\QuizTest.Android\\QuizTest.Android.csproj",
-      "packagesPath": "C:\\Users\\amoni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\QuizTest.Android\\obj\\",
+      "projectPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest.Android\\QuizTest.Android.csproj",
+      "packagesPath": "C:\\Users\\Batu\\.nuget\\packages\\",
+      "outputPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\amoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\Batu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "monoandroid71"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Batu\\.dotnet\\NuGetFallbackFolder": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://ci.appveyor.com/nuget/solrnet-022x5w7kmuba": {}
       },
       "frameworks": {
         "monoandroid71": {
           "projectReferences": {
-            "C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\QuizTest\\QuizTest.csproj": {
-              "projectPath": "C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\QuizTest\\QuizTest.csproj"
+            "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\QuizTest.csproj": {
+              "projectPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\QuizTest.csproj"
             }
           }
         }

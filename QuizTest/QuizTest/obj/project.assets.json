@@ -435,33 +435,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amoni\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\Batu\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\QuizTest\\QuizTest.csproj",
+      "projectUniqueName": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\QuizTest.csproj",
       "projectName": "QuizTest",
-      "projectPath": "C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\QuizTest\\QuizTest.csproj",
-      "packagesPath": "C:\\Users\\amoni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\QuizTest\\obj\\",
+      "projectPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\QuizTest.csproj",
+      "packagesPath": "C:\\Users\\Batu\\.nuget\\packages\\",
+      "outputPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\amoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\Batu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Batu\\.dotnet\\NuGetFallbackFolder": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://ci.appveyor.com/nuget/solrnet-022x5w7kmuba": {}
       },
@@ -511,7 +509,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'SQLite.Net-PCL 3.1.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "message": "'SQLite.Net-PCL 3.1.1' paketi, proje hedef çerçevesi '.NETStandard,Version=v2.0' yerine '.NETFramework,Version=v4.6.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
       "libraryId": "SQLite.Net-PCL",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"
@@ -521,7 +519,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'SQLite.Net.Core-PCL 3.1.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "message": "'SQLite.Net.Core-PCL 3.1.1' paketi, proje hedef çerçevesi '.NETStandard,Version=v2.0' yerine '.NETFramework,Version=v4.6.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
       "libraryId": "SQLite.Net.Core-PCL",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"

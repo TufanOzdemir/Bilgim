@@ -1,4 +1,5 @@
 ﻿using QuizTest.Models;
+using QuizTest.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,17 +8,18 @@ namespace QuizTest.Constant
 {
     public class Game
     {
+        public Game()
+        {
+            QuestionsWithAnswers = new List<QuestionAnswerViewModel>();
+        }
+
         public bool GameStatus { get; set; }
         public bool IsDoubleAnswerJokerUsed { get; set; }
         public bool IsPercent50JokerUsed { get; set; }
         public bool IsTimeOut { get; set; }
-        public int CurrentQuestion { get; set; }
+        public int CurrentQuestionNumber { get; set; }
+        public List<QuestionAnswerViewModel> QuestionsWithAnswers { get; set; }
         public int Point { get; set; }
-
-        public Game()
-        {
-            ClearGame();
-        }
 
         public void ScoreAdd(QuestionDifficult questionDifficult)
         {
@@ -46,7 +48,8 @@ namespace QuizTest.Constant
             IsDoubleAnswerJokerUsed = false;
             IsPercent50JokerUsed = false;
             IsTimeOut = false;
-            CurrentQuestion = 0;
+            CurrentQuestionNumber = 0;
+            QuestionsWithAnswers = null;
             Point = 0;
         }
 
