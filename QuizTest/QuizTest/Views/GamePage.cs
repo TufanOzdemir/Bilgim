@@ -10,12 +10,12 @@ namespace QuizTest.Views
     public class GamePage : ContentPage
     {
         Button _btnTime;
-        Game game;
+        Game _game;
         public GamePage(int currentQuestion, Game game)
         {
             game.CurrentQuestionNumber = 0;
             _btnTime = new Button() { WidthRequest = 40, HeightRequest = 40, CornerRadius = 80};
-            this.game = game;
+            _game = game;
             game.QuestionsWithAnswers.Add(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
@@ -54,7 +54,7 @@ namespace QuizTest.Views
                 if (time == 0.00)
                 {
                     DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
-                    game.IsTimeOut = true;
+                    _game.IsTimeOut = true;
                     RedirectToMainPage();
                     return false;
                 }
