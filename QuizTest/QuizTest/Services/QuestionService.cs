@@ -8,7 +8,7 @@ using System.Text;
 
 namespace QuizTest.Services
 {
-    class QuestionService
+    public class QuestionService
     {
         DataContext<Question> _dataContext;
 
@@ -57,9 +57,6 @@ namespace QuizTest.Services
                 return new Question();
             }
         }
-        public List<QuestionAnswerViewModel> GetQuestionListWithAnswerList()
-        {
-
-        }
+       
     }
 }

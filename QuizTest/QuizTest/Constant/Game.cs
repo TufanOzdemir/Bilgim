@@ -1,8 +1,6 @@
 ﻿using QuizTest.Models;
 using QuizTest.ViewModel;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace QuizTest.Constant
 {
@@ -36,12 +34,7 @@ namespace QuizTest.Constant
                 Point += 1000;
             }
         }
-
-        public void GameOver()
-        {
-            ClearGame();
-        }
-
+        
         private void ClearGame()
         {
             GameStatus = false;
