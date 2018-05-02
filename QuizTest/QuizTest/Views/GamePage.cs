@@ -11,8 +11,10 @@ namespace QuizTest.Views
     {
         Button _btnTime;
         Game _game;
-        public GamePage(Game game)
+        App app;
+        public GamePage(Game game,App app)
         {
+            this.app = app;
             game.CurrentQuestionNumber = 0;
             _btnTime = new Button() { WidthRequest = 40, HeightRequest = 40, CornerRadius = 80};
             _game = game;
@@ -63,9 +65,9 @@ namespace QuizTest.Views
             });
         }
 
-        private async void RedirectToMainPage()
+        private void RedirectToMainPage()
         {
-		    await Navigation.PushAsync(new MainPage());
+            app.ChangePage(new MainPage(app));
         }
     }
 }

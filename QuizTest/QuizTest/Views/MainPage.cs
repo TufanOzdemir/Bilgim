@@ -11,8 +11,10 @@ namespace QuizTest.Views
     {
 
         GameService _gameService;
-        public MainPage()
+        App app;
+        public MainPage(App app)
         {
+            this.app = app;
             _gameService = new GameService();
             ComponentLoad();
         }
@@ -20,14 +22,14 @@ namespace QuizTest.Views
         private void ComponentLoad()
         {
             StackLayout sl = new StackLayout();
-            sl.Children.Add(new Button { Text = "Başla", VerticalOptions = LayoutOptions.Center,HorizontalOptions = LayoutOptions.Center,Command = new Command(this.StartGame) });
+            sl.Children.Add(new Button { Text = "Başla", VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, Command = new Command(this.StartGame) });
             Content = sl;
         }
 
-        private async void StartGame(object obj)
+        private void StartGame(object obj)
         {
-            Game game = _gameService.StartNewGame();
-            await Navigation.PushAsync(new GamePage(game));
+            Game game = new Game(); //_gameService.StartNewGame();
+            app.ChangePage(new GamePage(game, app));
         }
     }
 }

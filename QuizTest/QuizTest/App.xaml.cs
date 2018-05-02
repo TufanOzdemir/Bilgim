@@ -7,11 +7,15 @@ namespace QuizTest
 {
     public partial class App : Application
     {
-
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new MainPage(this);
+        }
+
+        public void ChangePage(ContentPage page)
+        {
+            MainPage = page;
         }
 
         protected override void OnStart()
