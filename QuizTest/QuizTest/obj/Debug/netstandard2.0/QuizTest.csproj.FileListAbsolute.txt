@@ -1,0 +1,9 @@
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\bin\Debug\netstandard2.0\QuizTest.deps.json
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\bin\Debug\netstandard2.0\QuizTest.dll
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.csproj.CoreCompileInputs.cache
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.App.xaml.g.cs
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.AssemblyInfoInputs.cache
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.AssemblyInfo.cs
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\bin\Debug\netstandard2.0\QuizTest.pdb
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.dll
+c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.pdb
