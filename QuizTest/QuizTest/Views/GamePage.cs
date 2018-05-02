@@ -1,6 +1,7 @@
 ﻿using QuizTest.Constant;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -8,21 +9,39 @@ namespace QuizTest.Views
 {
     public class GamePage : ContentPage
     {
-        Label _lblTime;
+        Button _btnTime;
         Game game;
         public GamePage(int currentQuestion, Game game)
         {
-            _lblTime = new Label();
+            game.CurrentQuestionNumber = 0;
+            _btnTime = new Button() { WidthRequest = 40, HeightRequest = 40, CornerRadius = 80};
             this.game = game;
+            game.QuestionsWithAnswers.Add(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Deneme",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30,
+                    ID = 1
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Ahaha",IsCorrect = true,QuestionID = 1,Title = "A",ID = 1 },
+                    new Models.Answer(){Description = "Zuhaha",IsCorrect = false,QuestionID = 1,Title = "B",ID = 1 },
+                    new Models.Answer(){Description = "Puhaha",IsCorrect = false,QuestionID = 1,Title = "C",ID = 1 },
+                    new Models.Answer(){Description = "Tuhaha",IsCorrect = false,QuestionID = 1,Title = "D",ID = 1 },
+                }
+            });
+            Timer(game.QuestionsWithAnswers[game.CurrentQuestionNumber].Question.Time);
             ComponentLoad();
         }
 
         private void ComponentLoad()
         {
-            StackLayout sl = new StackLayout();
-            sl.Children.Add(_lblTime);
-            TimerStarterClicked();
+            StackLayout sl = new StackLayout() { VerticalOptions = LayoutOptions.CenterAndExpand };
 
+            sl.Children.Add(_btnTime);
             Content = sl;
         }
 
@@ -31,7 +50,7 @@ namespace QuizTest.Views
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 time -= 1;
-                _lblTime.Text = String.Format("{0}", time);
+                _btnTime.Text = String.Format("{0}", time);
                 if (time == 0.00)
                 {
                     DisplayAlert("Süre Doldu", "Geri sayım süresi bitti!", "Tamam");
@@ -47,11 +66,6 @@ namespace QuizTest.Views
         private void Last()
         {
 
-        }
-
-        private void TimerStarterClicked()
-        {
-            Timer(10);
         }
     }
 }
