@@ -1,4 +1,5 @@
 ﻿using QuizTest.Constant;
+using QuizTest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,12 @@ namespace QuizTest.Views
         Button _btnTime;
         Game _game;
         App app;
-        public GamePage(Game game,App app)
+        Question question;
+        public GamePage(Game game, App app)
         {
             this.app = app;
             game.CurrentQuestionNumber = 0;
-            _btnTime = new Button() { WidthRequest = 40, HeightRequest = 40, CornerRadius = 80};
+            _btnTime = new Button() { WidthRequest = 140, HeightRequest = 140, CornerRadius = 70, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, IsEnabled = false };
             _game = game;
             game.QuestionsWithAnswers.Add(new ViewModel.QuestionAnswerViewModel()
             {
@@ -35,15 +37,42 @@ namespace QuizTest.Views
                     new Models.Answer(){Description = "Tuhaha",IsCorrect = false,QuestionID = 1,Title = "D",ID = 1 },
                 }
             });
+            question = game.QuestionsWithAnswers[game.CurrentQuestionNumber].Question;
             Timer(game.QuestionsWithAnswers[game.CurrentQuestionNumber].Question.Time);
             ComponentLoad();
         }
 
         private void ComponentLoad()
         {
-            StackLayout sl = new StackLayout() { VerticalOptions = LayoutOptions.CenterAndExpand };
+            StackLayout sl = new StackLayout() { VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill, Padding = 5 };
+            StackLayout bottomSl = new StackLayout() { VerticalOptions = LayoutOptions.End, HorizontalOptions = LayoutOptions.EndAndExpand, Padding = 10 };
 
+            Frame frame = new Frame() { HasShadow = true };
+            frame.Content = new Label() { Text = question.Description };
+
+            Grid answerGrid = new Grid()
+            {
+                RowDefinitions =
+                {
+                    new RowDefinition { Height = new GridLength(50, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(50, GridUnitType.Star) }
+                },
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition { Width = new GridLength(50, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(50, GridUnitType.Star) }
+                },
+                HorizontalOptions = LayoutOptions.Fill,
+                VerticalOptions = LayoutOptions.Center
+            };
+            answerGrid.Children.Add(new Button() { Text = _game.QuestionsWithAnswers[_game.CurrentQuestionNumber].AnswerList[0].Description }, 0, 0);
+            answerGrid.Children.Add(new Button() { Text = _game.QuestionsWithAnswers[_game.CurrentQuestionNumber].AnswerList[1].Description }, 1, 0);
+            answerGrid.Children.Add(new Button() { Text = _game.QuestionsWithAnswers[_game.CurrentQuestionNumber].AnswerList[2].Description }, 0, 1);
+            answerGrid.Children.Add(new Button() { Text = _game.QuestionsWithAnswers[_game.CurrentQuestionNumber].AnswerList[3].Description }, 1, 1);
             sl.Children.Add(_btnTime);
+            bottomSl.Children.Add(frame);
+            bottomSl.Children.Add(answerGrid);
+            sl.Children.Add(bottomSl);
             Content = sl;
         }
 
