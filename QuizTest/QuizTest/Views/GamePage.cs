@@ -35,7 +35,7 @@ namespace QuizTest.Views
                 _lblTime.Text = String.Format("{0}", time);
                 if (time == 0.00)
                 {
-                    DisplayAlert("Süre Doldu", "Geri sayım süresi bitti!", "Tamam");
+                    DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
                     _game.IsTimeOut = true;
                     Last();
                     return false;
@@ -45,9 +45,9 @@ namespace QuizTest.Views
             });
         }
 
-        private void Last()
+        private async void Last()
         {
-
+            await Navigation.PushAsync(new MainPage());
         }
 
         private void TimerStarterClicked()
