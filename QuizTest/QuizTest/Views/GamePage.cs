@@ -11,7 +11,7 @@ namespace QuizTest.Views
     {
         Button _btnTime;
         Game _game;
-        public GamePage(int currentQuestion, Game game)
+        public GamePage(Game game)
         {
             game.CurrentQuestionNumber = 0;
             _btnTime = new Button() { WidthRequest = 40, HeightRequest = 40, CornerRadius = 80};
