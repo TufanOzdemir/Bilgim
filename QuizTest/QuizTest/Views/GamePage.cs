@@ -55,7 +55,7 @@ namespace QuizTest.Views
                 {
                     DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
                     game.IsTimeOut = true;
-                    Last();
+                    RedirectToMainPage();
                     return false;
                 }
 
@@ -63,9 +63,9 @@ namespace QuizTest.Views
             });
         }
 
-        private void RedirectToMainPage()
+        private async void RedirectToMainPage()
         {
-		await Navigation.PushAsync(new MainPage());
+		    await Navigation.PushAsync(new MainPage());
         }
     }
 }
