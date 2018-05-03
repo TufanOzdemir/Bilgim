@@ -18,6 +18,7 @@ namespace QuizTest.Constant
         public int CurrentQuestionNumber { get; set; }
         public List<QuestionAnswerViewModel> QuestionsWithAnswers { get; set; }
         public int Point { get; set; }
+        public bool IsGamePaused { get; set; }
 
         public void ScoreAdd(QuestionDifficult questionDifficult)
         {
@@ -35,6 +36,11 @@ namespace QuizTest.Constant
             }
         }
         
+        public QuestionAnswerViewModel CurrentQuestionAnswerViewModel()
+        {
+            return QuestionsWithAnswers[CurrentQuestionNumber];
+        }
+
         private void ClearGame()
         {
             GameStatus = false;

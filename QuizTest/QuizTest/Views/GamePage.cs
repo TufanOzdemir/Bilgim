@@ -15,6 +15,8 @@ namespace QuizTest.Views
         Game _game;
         App app;
         Question question;
+        Grid answerGrid;
+
         public GamePage(Game game, App app)
         {
             this.app = app;
@@ -38,8 +40,8 @@ namespace QuizTest.Views
                     new Models.Answer(){Description = "Tuhaha",IsCorrect = false,QuestionID = 1,Title = "D",ID = 1 },
                 }
             });
-            question = game.QuestionsWithAnswers[game.CurrentQuestionNumber].Question;
-            Timer(game.QuestionsWithAnswers[game.CurrentQuestionNumber].Question.Time);
+            question = _game.CurrentQuestionAnswerViewModel().Question;
+            Timer(question.Time);
             ComponentLoad();
         }
 
@@ -54,7 +56,7 @@ namespace QuizTest.Views
             Frame frame = new Frame() { HasShadow = true };
             frame.Content = new Label() { Text = question.Description };
 
-            Grid answerGrid = new Grid()
+            answerGrid = new Grid()
             {
                 RowDefinitions =
                 {
@@ -69,31 +71,97 @@ namespace QuizTest.Views
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Center
             };
-            answerGrid.Children.Add(new Button() { Text = _game.QuestionsWithAnswers[_game.CurrentQuestionNumber].AnswerList[0].Description }, 0, 0);
-            answerGrid.Children.Add(new Button() { Text = _game.QuestionsWithAnswers[_game.CurrentQuestionNumber].AnswerList[1].Description }, 1, 0);
-            answerGrid.Children.Add(new Button() { Text = _game.QuestionsWithAnswers[_game.CurrentQuestionNumber].AnswerList[2].Description }, 0, 1);
-            answerGrid.Children.Add(new Button() { Text = _game.QuestionsWithAnswers[_game.CurrentQuestionNumber].AnswerList[3].Description }, 1, 1);
-            sl.Children.Add(_btnTime);
+
+            Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString() };
+            Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString() };
+            Button b3 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[2].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[2].IsCorrect.ToString() };
+            Button b4 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[3].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[3].IsCorrect.ToString() };
+
+            b1.Clicked += CheckAnswerQuestion;
+            b2.Clicked += CheckAnswerQuestion;
+            b3.Clicked += CheckAnswerQuestion;
+            b4.Clicked += CheckAnswerQuestion;
+
+            answerGrid.Children.Add(b1, 0, 0);
+            answerGrid.Children.Add(b2, 1, 0);
+            answerGrid.Children.Add(b3, 0, 1);
+            answerGrid.Children.Add(b4, 1, 1);
+
             bottomSl.Children.Add(frame);
             bottomSl.Children.Add(answerGrid);
+
+            sl.Children.Add(_btnTime);
             sl.Children.Add(bottomSl);
+
             Content = sl;
+        }
+
+        private void CheckAnswerQuestion(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            _game.IsGamePaused = true;
+            if (button.ClassId.Equals("True"))
+            {
+                button.BackgroundColor = Color.Green;
+                _game.ScoreAdd(question.Difficult);
+                NextPageTimer(3, true);
+            }
+            else
+            {
+                button.BackgroundColor = Color.Red;
+                _game.GameStatus = false;
+                NextPageTimer(3, false);
+            }
+            foreach (Button item in answerGrid.Children)
+            {
+                if (item.ClassId.Equals("True"))
+                {
+                    item.BackgroundColor = Color.Green;
+                }
+                item.IsEnabled = false;
+            }
         }
 
         private void Timer(double time)
         {
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
+                if (!_game.IsGamePaused)
+                {
+                    time -= 1;
+                    _btnTime.Text = String.Format("{0}", time);
+                    if (time == 0.00)
+                    {
+                        DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
+                        _game.IsTimeOut = true;
+                        RedirectToMainPage();
+                        return false;
+                    }
+                }
+                return true;
+            });
+        }
+
+        private void NextPageTimer(double time, bool correct)
+        {
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
                 time -= 1;
-                _btnTime.Text = String.Format("{0}", time);
                 if (time == 0.00)
                 {
-                    DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
-                    _game.IsTimeOut = true;
-                    RedirectToMainPage();
+                    if (correct)
+                    {
+                        _game.IsGamePaused = false;
+                        _game.CurrentQuestionNumber++;
+                        app.ChangePage(new GamePage(_game, app));
+                    }
+                    else
+                    {
+                        DisplayAlert("Üzgünüz..",$"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
+                        RedirectToMainPage();
+                    }
                     return false;
                 }
-
                 return true;
             });
         }
