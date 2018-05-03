@@ -34,6 +34,7 @@ namespace QuizTest.Views
 
         private void ComponentLoad()
         {
+            ScrollView sw = new ScrollView();
             StackLayout mainStack = new StackLayout() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
             StackLayout bottomSl = new StackLayout() { VerticalOptions = LayoutOptions.End, HorizontalOptions = LayoutOptions.EndAndExpand, Padding = 10 };
 
@@ -69,8 +70,8 @@ namespace QuizTest.Views
                 }
             };
 
-            Button j1 = new Button() { Text = "%50", BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, IsVisible = !_game.IsPercent50JokerUsed, Margin = new Thickness(320, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
-            Button j2 = new Button() { Text = "2x", BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, IsVisible = !_game.IsDoubleAnswerJokerUsed, Margin = new Thickness(320, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
+            Button j1 = new Button() { Text = "%50", BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, IsVisible = !_game.IsPercent50JokerUsed, Margin = new Thickness(300, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
+            Button j2 = new Button() { Text = "2x", BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, IsVisible = !_game.IsDoubleAnswerJokerUsed, Margin = new Thickness(300, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
 
             Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
             Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
@@ -99,8 +100,8 @@ namespace QuizTest.Views
             mainStack.Children.Add(jokerGrid);
             mainStack.Children.Add(_btnTime);
             mainStack.Children.Add(bottomSl);
-
-            Content = mainStack;
+            sw.Content = mainStack;
+            Content = sw;
         }
 
         private void DoubleJokerUse(object sender, EventArgs e)
@@ -114,7 +115,7 @@ namespace QuizTest.Views
         {
             Button btn = (Button)sender;
             _game.IsPercent50JokerUsed = true;
-            answerGrid.Children.Where(i => i.ClassId.Equals("False")).ToList().PickRandom(2).ToList().ForEach(i=> { i.IsVisible = false; });
+            answerGrid.Children.Where(i => i.ClassId.Equals("False")).ToList().PickRandom(2).ToList().ForEach(i => { i.IsVisible = false; });
             btn.IsVisible = false;
         }
 
@@ -127,7 +128,7 @@ namespace QuizTest.Views
                 button.BackgroundColor = Color.Green;
                 _game.ScoreAdd(question.Difficult);
                 ReGenerateButton();
-                NextPageTimer(3, true);
+                NextPageTimer(1, true);
             }
             else
             {
@@ -137,7 +138,7 @@ namespace QuizTest.Views
                     button.BackgroundColor = Color.Red;
                     _game.GameStatus = false;
                     ReGenerateButton();
-                    NextPageTimer(3, false);
+                    NextPageTimer(1, false);
                 }
                 else
                 {
