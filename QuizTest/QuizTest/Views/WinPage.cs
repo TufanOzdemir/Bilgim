@@ -12,6 +12,7 @@ namespace QuizTest.Views
         App app;
         public WinPage(App app, Game game)
         {
+            BackgroundColor = App.CokKoyuTonRenk;
             _game = game;
             this.app = app;
             ComponentLoad();
@@ -23,16 +24,32 @@ namespace QuizTest.Views
             {
                 Children =
                 {
-                    new Label()
+                    new Frame()
                     {
-                        Text = $"Puanınız : {_game.Point} \n Tebrikler Kazandınız"
+                        Content = new Label()
+                        {
+                            Text = $"Puanınız : {_game.Point} \nTebrikler Kazandınız",
+                            TextColor = App.HafifKoyuTonRenk,
+                            HorizontalTextAlignment = TextAlignment.Center
+                        },
+                        HasShadow = true,
+                        BackgroundColor = App.KoyuTonRenk
                     },
                     new Button()
                     {
                         Text = "Ana Menüye Dön",
+                        WidthRequest = 200,
+                        HeightRequest = 200,
+                        CornerRadius = 100,
+                        BackgroundColor = App.KoyuTonRenk,
+                        TextColor = App.AcikTonRenk,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
                         Command = new Command(this.MainMenu)
                     }
-                }
+                },
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
             };
         }
 
