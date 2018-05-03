@@ -20,7 +20,6 @@ namespace QuizTest.Constant
         public int Point { get; set; }
         public bool IsGamePaused { get; set; }
         public bool IsDoubleAnswerJokerUsing { get; set; }
-        public bool IsPercent50JokerUsing { get; set; }
 
         public void ScoreAdd(QuestionDifficult questionDifficult)
         {

@@ -69,8 +69,8 @@ namespace QuizTest.Views
                 }
             };
 
-            Button j1 = new Button() { Text = "%50", BackgroundColor = App.HafifKoyuTonRenk, IsVisible = !_game.IsPercent50JokerUsed, Margin = new Thickness(320, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
-            Button j2 = new Button() { Text = "2x", BackgroundColor = App.HafifKoyuTonRenk, IsVisible = !_game.IsDoubleAnswerJokerUsed, Margin = new Thickness(320, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
+            Button j1 = new Button() { Text = "%50", BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, IsVisible = !_game.IsPercent50JokerUsed, Margin = new Thickness(320, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
+            Button j2 = new Button() { Text = "2x", BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, IsVisible = !_game.IsDoubleAnswerJokerUsed, Margin = new Thickness(320, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
 
             Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
             Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
@@ -113,7 +113,8 @@ namespace QuizTest.Views
         private void Percent50JokerUse(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            _game.IsPercent50JokerUsing = true;
+            _game.IsPercent50JokerUsed = true;
+            answerGrid.Children.Where(i => i.ClassId.Equals("False")).ToList().PickRandom(2).ToList().ForEach(i=> { i.IsVisible = false; });
             btn.IsVisible = false;
         }
 
