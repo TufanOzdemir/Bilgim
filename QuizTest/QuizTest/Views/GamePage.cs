@@ -160,7 +160,7 @@ namespace QuizTest.Views
                 _game.NextTour();
                 if (_game.GameStatus)
                 {
-                    Navigation.PushAsync(new GamePage(_game, app));
+                    app.ChangePage(new GamePage(_game, app));
                 }
                 else
                 {
@@ -171,12 +171,12 @@ namespace QuizTest.Views
 
         private void RedirectToMainPage()
         {
-            Navigation.PushAsync(new MainPage(app));
+            app.ChangePage(new MainPage(app));
         }
 
         private void WinScreenOpen()
         {
-            Navigation.PushAsync(new WinPage(app, _game));
+            app.ChangePage(new WinPage(app, _game));
         }
     }
 }

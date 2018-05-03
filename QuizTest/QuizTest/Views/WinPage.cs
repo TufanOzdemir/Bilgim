@@ -38,7 +38,7 @@ namespace QuizTest.Views
 
         private void MainMenu(object obj)
         {
-            Navigation.PushAsync(new MainPage(app));
+            app.ChangePage(new MainPage(app));
         }
     }
 }

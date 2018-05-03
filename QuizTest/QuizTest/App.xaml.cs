@@ -25,7 +25,7 @@ namespace QuizTest
             {
                 FirstInitialize();
             }
-            MainPage = new NavigationPage(new MainPage(this));
+            MainPage = new MainPage(this);
         }
 
         private void FirstInitialize()
@@ -180,6 +180,11 @@ namespace QuizTest
         {
             questionService.DeleteAll();
             answerService.DeleteAll();
+        }
+
+        public void ChangePage(ContentPage contentPage)
+        {
+            MainPage = contentPage;
         }
 
         protected override void OnStart()
