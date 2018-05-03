@@ -10,7 +10,7 @@ namespace QuizTest.Droid
     {
         public SQLiteConnection Connection()
         {
-            var sqliteFilename = "mydb.db3";
+            var sqliteFilename = "mydb1.db3";
             string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal); // Documents folder
             var path = Path.Combine(documentsPath, sqliteFilename);
             Console.WriteLine(path);

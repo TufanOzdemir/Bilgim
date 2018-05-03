@@ -24,6 +24,8 @@ namespace QuizTest.Services
             try
             {
                 _dataContext.Save(vm.Question);
+                var id = _dataContext.GetAll().Last().ID;
+                vm.AnswerList.ForEach(i => { i.QuestionID = id; });
                 aws.CreateList(vm.AnswerList);
             }
             catch (Exception ex)
@@ -53,13 +55,20 @@ namespace QuizTest.Services
                 Random random = new Random();
                 var k = GetAll();
                 var tata = k.Where(i => i.Difficult == difficulty).ToList();
-                return tata[random.Next(0, 4)];
+                return tata[random.Next(0, k.Count/3 - 1)];
             }
             catch
             {
                 return new Question();
             }
         }
-       
+
+        internal void DeleteAll()
+        {
+            foreach (var item in _dataContext.GetAll())
+            {
+                _dataContext.Delete(item);
+            }
+        }
     }
 }
