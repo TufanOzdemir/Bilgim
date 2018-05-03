@@ -10,7 +10,7 @@ namespace QuizTest.Views
     {
         Game _game;
         App app;
-        public WinPage(App app,Game game)
+        public WinPage(App app, Game game)
         {
             _game = game;
             this.app = app;
@@ -26,9 +26,19 @@ namespace QuizTest.Views
                     new Label()
                     {
                         Text = $"Puanınız : {_game.Point} \n Tebrikler Kazandınız"
+                    },
+                    new Button()
+                    {
+                        Text = "Ana Menüye Dön",
+                        Command = new Command(this.MainMenu)
                     }
                 }
             };
+        }
+
+        private void MainMenu(object obj)
+        {
+            app.ChangePage(new MainPage(app));
         }
     }
 }

@@ -152,7 +152,7 @@ namespace QuizTest.Views
                     }
                     else
                     {
-                        DisplayAlert("Üzgünüz..", $"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
+                        DisplayAlert("Üzgünüz", $"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
                         RedirectToMainPage();
                     }
                     return false;
