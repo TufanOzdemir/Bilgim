@@ -35,11 +35,6 @@ Debug
 Logs
 _DATA
 .vs
-.ide
-.cache
-.ide-wal
-.dll
-.xml
 # OS generated files #
 ######################
 .DS_Store

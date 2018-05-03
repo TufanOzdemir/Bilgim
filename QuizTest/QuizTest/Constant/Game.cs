@@ -35,10 +35,18 @@ namespace QuizTest.Constant
                 Point += 1000;
             }
         }
-        
+
         public QuestionAnswerViewModel CurrentQuestionAnswerViewModel()
         {
             return QuestionsWithAnswers[CurrentQuestionNumber];
+        }
+
+        public void NextTour()
+        {
+            if (CurrentQuestionNumber == QuestionsWithAnswers.Count)
+            {
+                GameStatus = false;
+            }
         }
 
         private void ClearGame()
