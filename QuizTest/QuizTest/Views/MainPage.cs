@@ -30,7 +30,7 @@ namespace QuizTest.Views
         private void StartGame(object obj)
         {
             Game game = _gameService.StartNewGame();
-            app.ChangePage(new GamePage(game, app));
+            Navigation.PushAsync(new GamePage(game, app));
         }
     }
 }

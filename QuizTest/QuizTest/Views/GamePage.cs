@@ -1,10 +1,12 @@
 ﻿using ProgressRingControl.Forms.Plugin;
 using QuizTest.Constant;
+using QuizTest.Helper;
 using QuizTest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Xamarin.Forms;
 
 namespace QuizTest.Views
@@ -16,6 +18,8 @@ namespace QuizTest.Views
         App app;
         Question question;
         Grid answerGrid;
+        MyTimer mainTimer;
+        MyTimer otherTimer;
 
         public GamePage(Game game, App app)
         {
@@ -27,10 +31,7 @@ namespace QuizTest.Views
             ComponentLoad();
         }
 
-        private void WinScreenOpen()
-        {
-            app.ChangePage(new WinPage(app, _game));
-        }
+
 
         private void ComponentLoad()
         {
@@ -86,7 +87,6 @@ namespace QuizTest.Views
         private void CheckAnswerQuestion(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            _game.IsGamePaused = true;
             if (button.ClassId.Equals("True"))
             {
                 button.BackgroundColor = Color.Green;
@@ -109,61 +109,74 @@ namespace QuizTest.Views
             }
         }
 
-        private void Timer(double time)
-        {
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-            {
-                if (!_game.IsGamePaused)
-                {
-                    time -= 1;
-                    _btnTime.Text = String.Format("{0}", time);
-                    if (time == 0.00)
-                    {
-                        DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
-                        _game.IsTimeOut = true;
-                        RedirectToMainPage();
-                        return false;
-                    }
-                }
-                return true;
-            });
-        }
-
         private void NextPageTimer(double time, bool correct)
         {
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            if (correct)
             {
-                time -= 1;
-                if (time == 0.00)
+                otherTimer = new MyTimer(TimeSpan.FromSeconds(1), NextScreen, false);
+            }
+            else
+            {
+                otherTimer = new MyTimer(TimeSpan.FromSeconds(1), LostScreen, false);
+            }
+            mainTimer.Stop();
+            otherTimer.StartTime(time);
+        }
+
+        private void Timer(double time)
+        {
+            mainTimer = new MyTimer(TimeSpan.FromSeconds(1), TimeOut, false);
+            mainTimer.StartTime(question.Time);
+        }
+
+        private void TimeOut()
+        {
+            if (!mainTimer._running)
+            {
+                DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
+                _game.IsTimeOut = true;
+                RedirectToMainPage();
+            }
+            else
+            {
+                _btnTime.Text = mainTimer.timer.ToString();
+            }
+        }
+
+        private void LostScreen()
+        {
+            if (otherTimer.timer <= 0)
+            {
+                DisplayAlert("Üzgünüz", $"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
+                RedirectToMainPage();
+            }
+        }
+
+        private void NextScreen()
+        {
+            if (otherTimer.timer <= 0)
+            {
+                _game.CurrentQuestionNumber++;
+                _game.NextTour();
+                if (_game.GameStatus)
                 {
-                    if (correct)
-                    {
-                        _game.IsGamePaused = false;
-                        _game.CurrentQuestionNumber++;
-                        _game.NextTour();
-                        if (_game.GameStatus)
-                        {
-                            app.ChangePage(new GamePage(_game, app));
-                        }
-                        else
-                        {
-                            WinScreenOpen();
-                        }
-                    }
-                    else
-                    {
-                        DisplayAlert("Üzgünüz", $"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
-                        RedirectToMainPage();
-                    }
-                    return false;
+                    Navigation.PushAsync(new GamePage(_game, app));
                 }
-                return true;
-            });
+                else
+                {
+                    WinScreenOpen();
+                }
+            }
         }
 
         private void RedirectToMainPage()
         {
-            app.ChangePage(new MainPage(app));
+            Navigation.PushAsync(new MainPage(app));
+        }
+
+        private void WinScreenOpen()
+        {
+            Navigation.PushAsync(new WinPage(app, _game));
         }
     }
 }
