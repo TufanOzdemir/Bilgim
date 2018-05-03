@@ -3,6 +3,7 @@ using QuizTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Xamarin.Forms;
 
 namespace QuizTest.Views
@@ -28,29 +29,22 @@ namespace QuizTest.Views
             Content = sl;
         }
 
-        private void StartGame(object obj)
+        private async void StartGame(object obj)
         {
             Game game = _gameService.StartNewGame();
             var width = Application.Current.MainPage.Width;
             var storyboard = new Animation();
-            var rotation = new Animation(callback: d => _button.Rotation = d,
-                                          start: _button.Rotation,
-                                          end: _button.Rotation + 360,
-                                          easing: Easing.SpringOut);
+            var animation = new Animation(callback: d => _button.Rotation = d,
+                                 start: _button.Rotation,
+                                 end: _button.Rotation + 360,
+                                 easing: Easing.SpringOut);
+            _button.Animate("Loop",animation,1,250,Easing.SpringOut);
 
+           await _button.ScaleTo(2,1000,Easing.SpringIn);
+           await _button.ScaleTo(1,1000,Easing.SpringOut);
+            //animation.Commit(_button, "Loop", length: 800);
+            Thread.Sleep(1000);
 
-            var exitRight = new Animation(callback: d => _button.TranslationX = d,
-                                           start: 0,
-                                           end: width,
-                                           easing: Easing.SpringIn);
-
-            var enterLeft = new Animation(callback: d => _button.TranslationX = d,
-                                           start: -width,
-                                           end: 0,
-                                           easing: Easing.BounceOut);
-            storyboard.Add(0, 1, rotation);
-            storyboard.Add(0, 0.5, exitRight);
-            storyboard.Commit(_button, "Loop", length: 1400);
             app.ChangePage(new GamePage(game, app) { BackgroundColor = App.CokKoyuTonRenk });
         }
     }
