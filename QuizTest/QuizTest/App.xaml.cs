@@ -9,7 +9,7 @@ namespace QuizTest
     public partial class App : Application
     {
         public static Color AcikTonRenk = Color.FromHex("#ecf0f1");
-        public static Color HafifKoyuTonRenk = Color.FromHex("#bdc3c7");
+        public static Color HafifKoyuTonRenk = Color.FromHex("#3498db");
         public static Color KoyuTonRenk = Color.FromHex("#960FEE");
         public static Color CokKoyuTonRenk = Color.FromHex("#260742");
 
