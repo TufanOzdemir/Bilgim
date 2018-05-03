@@ -33,14 +33,13 @@ namespace QuizTest.Views
 
         private void ComponentLoad()
         {
-            Frame MainFrame = new Frame();
-            StackLayout sl = new StackLayout() { VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill, Padding = 5 };
+            StackLayout mainStack = new StackLayout() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
             StackLayout bottomSl = new StackLayout() { VerticalOptions = LayoutOptions.End, HorizontalOptions = LayoutOptions.EndAndExpand, Padding = 10 };
 
-            Frame frame = new Frame() { HasShadow = true, BackgroundColor = App.HafifKoyuTonRenk };
-            frame.Content = new Label() { Text = question.Description, TextColor = App.AcikTonRenk };
+            Frame frame = new Frame() { HasShadow = true, BackgroundColor = App.AcikTonRenk};
+            frame.Content = new Label() { Text = question.Description, TextColor = App.KoyuTonRenk, HorizontalTextAlignment = TextAlignment.Center,VerticalTextAlignment = TextAlignment.Center };
 
-            _btnTime = new Button() { Text = question.Time.ToString(), FontSize = 15, BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, WidthRequest = 140, HeightRequest = 140, CornerRadius = 70, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+            _btnTime = new Button() { Text = question.Time.ToString(), FontSize = 25, BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, WidthRequest = 180, HeightRequest = 180, CornerRadius = 90, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
 
             answerGrid = new Grid()
             {
@@ -53,15 +52,13 @@ namespace QuizTest.Views
                 {
                     new ColumnDefinition { Width = new GridLength(50, GridUnitType.Star) },
                     new ColumnDefinition { Width = new GridLength(50, GridUnitType.Star) }
-                },
-                HorizontalOptions = LayoutOptions.Fill,
-                VerticalOptions = LayoutOptions.Center
+                }
             };
 
-            Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString(), BackgroundColor = App.HafifKoyuTonRenk, TextColor = BackgroundColor = App.KoyuTonRenk };
-            Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString(), BackgroundColor = App.HafifKoyuTonRenk, TextColor = BackgroundColor = App.KoyuTonRenk };
-            Button b3 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[2].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[2].IsCorrect.ToString(), BackgroundColor = App.HafifKoyuTonRenk, TextColor = BackgroundColor = App.KoyuTonRenk };
-            Button b4 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[3].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[3].IsCorrect.ToString(), BackgroundColor = App.HafifKoyuTonRenk, TextColor = BackgroundColor = App.KoyuTonRenk };
+            Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b3 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[2].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[2].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b4 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[3].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[3].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
 
             b1.Clicked += CheckAnswerQuestion;
             b2.Clicked += CheckAnswerQuestion;
@@ -75,13 +72,11 @@ namespace QuizTest.Views
 
             bottomSl.Children.Add(frame);
             bottomSl.Children.Add(answerGrid);
-            
-            MainFrame.Content = sl;
 
-            sl.Children.Add(_btnTime);
-            sl.Children.Add(bottomSl);
+            mainStack.Children.Add(_btnTime);
+            mainStack.Children.Add(bottomSl);
 
-            Content = MainFrame;
+            Content = mainStack;
         }
 
         private void CheckAnswerQuestion(object sender, EventArgs e)
