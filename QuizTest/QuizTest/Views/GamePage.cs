@@ -41,7 +41,7 @@ namespace QuizTest.Views
             Frame frame = new Frame() { HasShadow = true, BackgroundColor = App.AcikTonRenk };
             frame.Content = new Label() { Text = question.Description, TextColor = App.KoyuTonRenk, HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center };
 
-            _btnTime = new Button() { Text = question.Time.ToString(), FontSize = 25, BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, WidthRequest = 180, HeightRequest = 180, CornerRadius = 90, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
+            _btnTime = new Button() { Text = question.Time.ToString(), FontSize = 25, BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, WidthRequest = 180, HeightRequest = 180, CornerRadius = 90, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, IsEnabled = false };
 
             answerGrid = new Grid()
             {
@@ -126,6 +126,7 @@ namespace QuizTest.Views
             if (button.ClassId.Equals("True"))
             {
                 button.BackgroundColor = Color.Green;
+                this.RotateTo(360, 100, Easing.BounceOut);
                 _game.ScoreAdd(question.Difficult);
                 ReGenerateButton();
                 NextPageTimer(1, true);

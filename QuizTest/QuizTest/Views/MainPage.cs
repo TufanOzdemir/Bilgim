@@ -42,8 +42,6 @@ namespace QuizTest.Views
 
            await _button.ScaleTo(2,1000,Easing.SpringIn);
            await _button.ScaleTo(1,1000,Easing.SpringOut);
-            //animation.Commit(_button, "Loop", length: 800);
-            Thread.Sleep(1000);
 
             app.ChangePage(new GamePage(game, app) { BackgroundColor = App.CokKoyuTonRenk });
         }
