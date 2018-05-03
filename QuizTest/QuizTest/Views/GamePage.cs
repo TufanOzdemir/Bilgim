@@ -1,10 +1,12 @@
 ﻿using ProgressRingControl.Forms.Plugin;
 using QuizTest.Constant;
+using QuizTest.Helper;
 using QuizTest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Xamarin.Forms;
 
 namespace QuizTest.Views
@@ -16,32 +18,28 @@ namespace QuizTest.Views
         App app;
         Question question;
         Grid answerGrid;
+        MyTimer mainTimer;
+        MyTimer otherTimer;
 
         public GamePage(Game game, App app)
         {
+            BackgroundColor = App.CokKoyuTonRenk;
             this.app = app;
             _game = game;
             question = _game.CurrentQuestionAnswerViewModel().Question;
-            _btnTime = new Button() { Text = question.Time.ToString(), WidthRequest = 140, HeightRequest = 140, CornerRadius = 70, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, IsEnabled = false };
             Timer(question.Time);
             ComponentLoad();
         }
 
-        private void WinScreenOpen()
-        {
-            app.ChangePage(new WinPage(app, _game));
-        }
-
         private void ComponentLoad()
         {
-            StackLayout sl = new StackLayout() { VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill, Padding = 5 };
-
-            var progressRing = new ProgressRing { RingThickness = 20, Progress = 0.5f, BackgroundColor = Color.Black, IsEnabled = true, IsVisible = true, RingBaseColor = Color.Red, RingProgressColor = Color.Green, AnimatedProgress = 1, AnimationEasing = Easing.Linear };
-            sl.Children.Add(progressRing);
+            StackLayout mainStack = new StackLayout() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
             StackLayout bottomSl = new StackLayout() { VerticalOptions = LayoutOptions.End, HorizontalOptions = LayoutOptions.EndAndExpand, Padding = 10 };
 
-            Frame frame = new Frame() { HasShadow = true };
-            frame.Content = new Label() { Text = question.Description };
+            Frame frame = new Frame() { HasShadow = true, BackgroundColor = App.AcikTonRenk};
+            frame.Content = new Label() { Text = question.Description, TextColor = App.KoyuTonRenk, HorizontalTextAlignment = TextAlignment.Center,VerticalTextAlignment = TextAlignment.Center };
+
+            _btnTime = new Button() { Text = question.Time.ToString(), FontSize = 25, BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, WidthRequest = 180, HeightRequest = 180, CornerRadius = 90, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
 
             answerGrid = new Grid()
             {
@@ -54,15 +52,13 @@ namespace QuizTest.Views
                 {
                     new ColumnDefinition { Width = new GridLength(50, GridUnitType.Star) },
                     new ColumnDefinition { Width = new GridLength(50, GridUnitType.Star) }
-                },
-                HorizontalOptions = LayoutOptions.Fill,
-                VerticalOptions = LayoutOptions.Center
+                }
             };
 
-            Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString() };
-            Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString() };
-            Button b3 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[2].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[2].IsCorrect.ToString() };
-            Button b4 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[3].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[3].IsCorrect.ToString() };
+            Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b3 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[2].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[2].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b4 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[3].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[3].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
 
             b1.Clicked += CheckAnswerQuestion;
             b2.Clicked += CheckAnswerQuestion;
@@ -77,16 +73,15 @@ namespace QuizTest.Views
             bottomSl.Children.Add(frame);
             bottomSl.Children.Add(answerGrid);
 
-            sl.Children.Add(_btnTime);
-            sl.Children.Add(bottomSl);
+            mainStack.Children.Add(_btnTime);
+            mainStack.Children.Add(bottomSl);
 
-            Content = sl;
+            Content = mainStack;
         }
 
         private void CheckAnswerQuestion(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            _game.IsGamePaused = true;
             if (button.ClassId.Equals("True"))
             {
                 button.BackgroundColor = Color.Green;
@@ -109,61 +104,74 @@ namespace QuizTest.Views
             }
         }
 
-        private void Timer(double time)
-        {
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-            {
-                if (!_game.IsGamePaused)
-                {
-                    time -= 1;
-                    _btnTime.Text = String.Format("{0}", time);
-                    if (time == 0.00)
-                    {
-                        DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
-                        _game.IsTimeOut = true;
-                        RedirectToMainPage();
-                        return false;
-                    }
-                }
-                return true;
-            });
-        }
-
         private void NextPageTimer(double time, bool correct)
         {
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            if (correct)
             {
-                time -= 1;
-                if (time == 0.00)
+                otherTimer = new MyTimer(TimeSpan.FromSeconds(1), NextScreen, false);
+            }
+            else
+            {
+                otherTimer = new MyTimer(TimeSpan.FromSeconds(1), LostScreen, false);
+            }
+            mainTimer.Stop();
+            otherTimer.StartTime(time);
+        }
+
+        private void Timer(double time)
+        {
+            mainTimer = new MyTimer(TimeSpan.FromSeconds(1), TimeOut, false);
+            mainTimer.StartTime(question.Time);
+        }
+
+        private void TimeOut()
+        {
+            if (mainTimer.timer <= 0)
+            {
+                DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
+                _game.IsTimeOut = true;
+                RedirectToMainPage();
+            }
+            else
+            {
+                _btnTime.Text = mainTimer.timer.ToString();
+            }
+        }
+
+        private void LostScreen()
+        {
+            if (otherTimer.timer <= 0)
+            {
+                DisplayAlert("Üzgünüz", $"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
+                RedirectToMainPage();
+            }
+        }
+
+        private void NextScreen()
+        {
+            if (otherTimer.timer <= 0)
+            {
+                _game.CurrentQuestionNumber++;
+                _game.NextTour();
+                if (_game.GameStatus)
                 {
-                    if (correct)
-                    {
-                        _game.IsGamePaused = false;
-                        _game.CurrentQuestionNumber++;
-                        _game.NextTour();
-                        if (_game.GameStatus)
-                        {
-                            app.ChangePage(new GamePage(_game, app));
-                        }
-                        else
-                        {
-                            WinScreenOpen();
-                        }
-                    }
-                    else
-                    {
-                        DisplayAlert("Üzgünüz..", $"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
-                        RedirectToMainPage();
-                    }
-                    return false;
+                    app.ChangePage(new GamePage(_game, app) { BackgroundColor = App.CokKoyuTonRenk });
                 }
-                return true;
-            });
+                else
+                {
+                    WinScreenOpen();
+                }
+            }
         }
 
         private void RedirectToMainPage()
         {
             app.ChangePage(new MainPage(app));
+        }
+
+        private void WinScreenOpen()
+        {
+            app.ChangePage(new WinPage(app, _game));
         }
     }
 }
