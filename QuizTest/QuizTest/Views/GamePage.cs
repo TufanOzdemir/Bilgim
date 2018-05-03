@@ -1,4 +1,5 @@
-﻿using QuizTest.Constant;
+﻿using ProgressRingControl.Forms.Plugin;
+using QuizTest.Constant;
 using QuizTest.Models;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ namespace QuizTest.Views
         private void ComponentLoad()
         {
             StackLayout sl = new StackLayout() { VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill, Padding = 5 };
+           
+            var progressRing = new ProgressRing { RingThickness = 20, Progress = 0.5f , BackgroundColor = Color.Black, IsEnabled = true , IsVisible = true, RingBaseColor = Color.Red, RingProgressColor = Color.Green, AnimatedProgress = 1 , AnimationEasing = Easing.Linear};
+            sl.Children.Add(progressRing);
             StackLayout bottomSl = new StackLayout() { VerticalOptions = LayoutOptions.End, HorizontalOptions = LayoutOptions.EndAndExpand, Padding = 10 };
 
             Frame frame = new Frame() { HasShadow = true };
