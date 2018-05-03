@@ -14,9 +14,6 @@ namespace QuizTest.Models
         public string Description { get; set; }
 
         [NotNull]
-        public string Title { get; set; }
-
-        [NotNull]
         public bool IsCorrect { get; set; }
 
         [NotNull]
