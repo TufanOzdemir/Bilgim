@@ -20,7 +20,7 @@ namespace QuizTest.Services
         {
             game = new Game();
             //Easy
-            while (game.QuestionsWithAnswers.Count < 1)
+            while (game.QuestionsWithAnswers.Count < 3)
             {
 
                 Question question = _questionService.GetRandomQuestion(Models.QuestionDifficult.Easy);
@@ -36,7 +36,7 @@ namespace QuizTest.Services
                 }
             }
             //Medium
-            while(game.QuestionsWithAnswers.Count < 2)
+            while(game.QuestionsWithAnswers.Count < 6)
             {
                 Question question = _questionService.GetRandomQuestion(Models.QuestionDifficult.Medium);
                 if (!game.QuestionsWithAnswers.Any(w => w.Question.ID == question.ID))
@@ -51,7 +51,7 @@ namespace QuizTest.Services
                 }
             }
             //Hard
-            while (game.QuestionsWithAnswers.Count < 3)
+            while (game.QuestionsWithAnswers.Count < 9)
             {
                 Question question = _questionService.GetRandomQuestion(Models.QuestionDifficult.Hard);
                 if (!game.QuestionsWithAnswers.Any(w => w.Question.ID == question.ID))
