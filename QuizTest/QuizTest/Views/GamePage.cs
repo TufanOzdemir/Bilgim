@@ -20,19 +20,23 @@ namespace QuizTest.Views
         public GamePage(Game game, App app)
         {
             this.app = app;
-            game.CurrentQuestionNumber = 0;
-            _btnTime = new Button() { WidthRequest = 140, HeightRequest = 140, CornerRadius = 70, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, IsEnabled = false };
             _game = game;
             question = _game.CurrentQuestionAnswerViewModel().Question;
+            _btnTime = new Button() { Text = question.Time.ToString(), WidthRequest = 140, HeightRequest = 140, CornerRadius = 70, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, IsEnabled = false };
             Timer(question.Time);
             ComponentLoad();
+        }
+
+        private void WinScreenOpen()
+        {
+            app.ChangePage(new WinPage(app, _game));
         }
 
         private void ComponentLoad()
         {
             StackLayout sl = new StackLayout() { VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Fill, Padding = 5 };
-           
-            var progressRing = new ProgressRing { RingThickness = 20, Progress = 0.5f , BackgroundColor = Color.Black, IsEnabled = true , IsVisible = true, RingBaseColor = Color.Red, RingProgressColor = Color.Green, AnimatedProgress = 1 , AnimationEasing = Easing.Linear};
+
+            var progressRing = new ProgressRing { RingThickness = 20, Progress = 0.5f, BackgroundColor = Color.Black, IsEnabled = true, IsVisible = true, RingBaseColor = Color.Red, RingProgressColor = Color.Green, AnimatedProgress = 1, AnimationEasing = Easing.Linear };
             sl.Children.Add(progressRing);
             StackLayout bottomSl = new StackLayout() { VerticalOptions = LayoutOptions.End, HorizontalOptions = LayoutOptions.EndAndExpand, Padding = 10 };
 
@@ -136,11 +140,19 @@ namespace QuizTest.Views
                     {
                         _game.IsGamePaused = false;
                         _game.CurrentQuestionNumber++;
-                        app.ChangePage(new GamePage(_game, app));
+                        _game.NextTour();
+                        if (_game.GameStatus)
+                        {
+                            app.ChangePage(new GamePage(_game, app));
+                        }
+                        else
+                        {
+                            WinScreenOpen();
+                        }
                     }
                     else
                     {
-                        DisplayAlert("Üzgünüz..",$"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
+                        DisplayAlert("Üzgünüz..", $"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
                         RedirectToMainPage();
                     }
                     return false;
