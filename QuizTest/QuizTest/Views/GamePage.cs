@@ -22,23 +22,6 @@ namespace QuizTest.Views
             game.CurrentQuestionNumber = 0;
             _btnTime = new Button() { WidthRequest = 140, HeightRequest = 140, CornerRadius = 70, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center, IsEnabled = false };
             _game = game;
-            game.QuestionsWithAnswers.Add(new ViewModel.QuestionAnswerViewModel()
-            {
-                Question = new Models.Question()
-                {
-                    Description = "Deneme",
-                    Difficult = Models.QuestionDifficult.Easy,
-                    Time = 30,
-                    ID = 1
-                },
-                AnswerList = new List<Models.Answer>()
-                {
-                    new Models.Answer(){Description = "Ahaha",IsCorrect = true,QuestionID = 1,Title = "A",ID = 1 },
-                    new Models.Answer(){Description = "Zuhaha",IsCorrect = false,QuestionID = 1,Title = "B",ID = 1 },
-                    new Models.Answer(){Description = "Puhaha",IsCorrect = false,QuestionID = 1,Title = "C",ID = 1 },
-                    new Models.Answer(){Description = "Tuhaha",IsCorrect = false,QuestionID = 1,Title = "D",ID = 1 },
-                }
-            });
             question = _game.CurrentQuestionAnswerViewModel().Question;
             Timer(question.Time);
             ComponentLoad();

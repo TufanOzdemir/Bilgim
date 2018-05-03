@@ -11,17 +11,20 @@ namespace QuizTest.Services
     public class QuestionService
     {
         DataContext<Question> _dataContext;
+        AnswerService aws;
 
         public QuestionService()
         {
             _dataContext = new DataContext<Question>();
+            aws = new AnswerService();
         }
 
-        public void Create(Question question)
+        public void Create(QuestionAnswerViewModel vm)
         {
             try
             {
-                _dataContext.Save(question);
+                _dataContext.Save(vm.Question);
+                aws.CreateList(vm.AnswerList);
             }
             catch (Exception ex)
             {

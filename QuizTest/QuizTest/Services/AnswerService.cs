@@ -20,5 +20,20 @@ namespace QuizTest.Services
             List<Answer> answerList = _dataContext.GetAll().Where(w=>w.ID == questionID).ToList();
             return answerList;
         }
+
+        internal void CreateList(List<Answer> answerList)
+        {
+            try
+            {
+                foreach (var item in answerList)
+                {
+                    _dataContext.Save(item);
+                }
+            }
+            catch
+            {
+                
+            }
+        }
     }
 }

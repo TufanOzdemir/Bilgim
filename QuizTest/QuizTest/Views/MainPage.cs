@@ -28,7 +28,7 @@ namespace QuizTest.Views
 
         private void StartGame(object obj)
         {
-            Game game = new Game(); //_gameService.StartNewGame();
+            Game game = _gameService.StartNewGame();
             app.ChangePage(new GamePage(game, app));
         }
     }
