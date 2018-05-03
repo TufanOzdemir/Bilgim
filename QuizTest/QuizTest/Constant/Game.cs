@@ -19,6 +19,8 @@ namespace QuizTest.Constant
         public List<QuestionAnswerViewModel> QuestionsWithAnswers { get; set; }
         public int Point { get; set; }
         public bool IsGamePaused { get; set; }
+        public bool IsDoubleAnswerJokerUsing { get; set; }
+        public bool IsPercent50JokerUsing { get; set; }
 
         public void ScoreAdd(QuestionDifficult questionDifficult)
         {

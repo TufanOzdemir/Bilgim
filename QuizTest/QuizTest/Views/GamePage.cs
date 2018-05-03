@@ -18,6 +18,7 @@ namespace QuizTest.Views
         App app;
         Question question;
         Grid answerGrid;
+        Grid jokerGrid;
         MyTimer mainTimer;
         MyTimer otherTimer;
 
@@ -36,8 +37,8 @@ namespace QuizTest.Views
             StackLayout mainStack = new StackLayout() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.CenterAndExpand };
             StackLayout bottomSl = new StackLayout() { VerticalOptions = LayoutOptions.End, HorizontalOptions = LayoutOptions.EndAndExpand, Padding = 10 };
 
-            Frame frame = new Frame() { HasShadow = true, BackgroundColor = App.AcikTonRenk};
-            frame.Content = new Label() { Text = question.Description, TextColor = App.KoyuTonRenk, HorizontalTextAlignment = TextAlignment.Center,VerticalTextAlignment = TextAlignment.Center };
+            Frame frame = new Frame() { HasShadow = true, BackgroundColor = App.AcikTonRenk };
+            frame.Content = new Label() { Text = question.Description, TextColor = App.KoyuTonRenk, HorizontalTextAlignment = TextAlignment.Center, VerticalTextAlignment = TextAlignment.Center };
 
             _btnTime = new Button() { Text = question.Time.ToString(), FontSize = 25, BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, WidthRequest = 180, HeightRequest = 180, CornerRadius = 90, VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
 
@@ -55,10 +56,29 @@ namespace QuizTest.Views
                 }
             };
 
+            jokerGrid = new Grid()
+            {
+                RowDefinitions =
+                {
+                    new RowDefinition { Height = new GridLength(50, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(50, GridUnitType.Star) }
+                },
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition { Width = new GridLength(20, GridUnitType.Star) }
+                }
+            };
+
+            Button j1 = new Button() { Text = "%50", BackgroundColor = App.HafifKoyuTonRenk, IsVisible = !_game.IsPercent50JokerUsed, Margin = new Thickness(320, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
+            Button j2 = new Button() { Text = "2x", BackgroundColor = App.HafifKoyuTonRenk, IsVisible = !_game.IsDoubleAnswerJokerUsed, Margin = new Thickness(320, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
+
             Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
             Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
             Button b3 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[2].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[2].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
             Button b4 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[3].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[3].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+
+            j1.Clicked += Percent50JokerUse;
+            j2.Clicked += DoubleJokerUse;
 
             b1.Clicked += CheckAnswerQuestion;
             b2.Clicked += CheckAnswerQuestion;
@@ -70,30 +90,65 @@ namespace QuizTest.Views
             answerGrid.Children.Add(b3, 0, 1);
             answerGrid.Children.Add(b4, 1, 1);
 
+            jokerGrid.Children.Add(j1, 0, 0);
+            jokerGrid.Children.Add(j2, 0, 1);
+
             bottomSl.Children.Add(frame);
             bottomSl.Children.Add(answerGrid);
 
+            mainStack.Children.Add(jokerGrid);
             mainStack.Children.Add(_btnTime);
             mainStack.Children.Add(bottomSl);
 
             Content = mainStack;
         }
 
+        private void DoubleJokerUse(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            _game.IsDoubleAnswerJokerUsing = true;
+            btn.IsVisible = false;
+        }
+
+        private void Percent50JokerUse(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            _game.IsPercent50JokerUsing = true;
+            btn.IsVisible = false;
+        }
+
         private void CheckAnswerQuestion(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+
             if (button.ClassId.Equals("True"))
             {
                 button.BackgroundColor = Color.Green;
                 _game.ScoreAdd(question.Difficult);
+                ReGenerateButton();
                 NextPageTimer(3, true);
             }
             else
             {
-                button.BackgroundColor = Color.Red;
-                _game.GameStatus = false;
-                NextPageTimer(3, false);
+                if (_game.IsDoubleAnswerJokerUsing && _game.IsDoubleAnswerJokerUsed)
+                {
+                    _game.IsDoubleAnswerJokerUsed = true;
+                    button.BackgroundColor = Color.Red;
+                    _game.GameStatus = false;
+                    ReGenerateButton();
+                    NextPageTimer(3, false);
+                }
+                else
+                {
+                    button.BackgroundColor = Color.Red;
+                }
             }
+
+            _game.IsDoubleAnswerJokerUsed = _game.IsDoubleAnswerJokerUsing;
+        }
+
+        private void ReGenerateButton()
+        {
             foreach (Button item in answerGrid.Children)
             {
                 if (item.ClassId.Equals("True"))
