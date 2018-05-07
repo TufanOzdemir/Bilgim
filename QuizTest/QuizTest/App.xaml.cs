@@ -520,50 +520,243 @@ namespace QuizTest
             {
                 Question = new Models.Question()
                 {
-                    Description = "Aşağıdakilerden hangisi uzun ömrün simgesidir?",
+                    Description = "İlk özgün Türk tiyatro yapıtı olarak kabul edilen Şair Evlenmesi, hangi yazarın eseridir?",
                     Difficult = Models.QuestionDifficult.Hard,
                     Time = 60
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Papatya",IsCorrect = false},
-                    new Models.Answer(){Description = "Bıcağa Sarılmış Yılan",IsCorrect = false},
-                    new Models.Answer(){Description = "Lotus Çiçeği",IsCorrect = true},
-                    new Models.Answer(){Description = "Mediterian Suyu",IsCorrect = false},
+                    new Models.Answer(){Description = "İbrahim Şinasi ",IsCorrect = true},
+                    new Models.Answer(){Description = "Namık Kemal ",IsCorrect = false},
+                    new Models.Answer(){Description = "Ahmet Mihtah Efendi ",IsCorrect = false},
+                    new Models.Answer(){Description = "Abdülhak Hamit ",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Hem kapı kolu hemde bahane anlamında kullanılan kelime hangisidir?",
+                    Description = "'İncecikten bir kar yağar,tozar Elif Elif diye' dizeleriyle başlayan semaiyi söyleyen saz şairirmiz kimdir?",
                     Difficult = Models.QuestionDifficult.Hard,
                     Time = 60
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Kulp",IsCorrect = true},
-                    new Models.Answer(){Description = "Tokmak",IsCorrect = false},
-                    new Models.Answer(){Description = "Hokka",IsCorrect = false},
-                    new Models.Answer(){Description = "Mandal",IsCorrect = false},
+                    new Models.Answer(){Description = "Yunus Emre",IsCorrect = false},
+                    new Models.Answer(){Description = "Pir Sultan Abdal",IsCorrect = false},
+                    new Models.Answer(){Description = "Karacaoğlan",IsCorrect = true},
+                    new Models.Answer(){Description = "Köroğlu",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Dilimize fransızcadan geçen ve bir tiyatroterimi ile bir tatlı ismi olarak kullanılan kelime hangisidir?",
+                    Description = "Devlet Denetleme Kurulu aşağıdakilerden hangisine bağlıdır?",
                     Difficult = Models.QuestionDifficult.Hard,
                     Time = 60
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Turta",IsCorrect = false},
-                    new Models.Answer(){Description = "Sufle",IsCorrect = true},
-                    new Models.Answer(){Description = "Gofret",IsCorrect = false},
-                    new Models.Answer(){Description = "Pafye",IsCorrect = false},
+                    new Models.Answer(){Description = "TBMM",IsCorrect = false},
+                    new Models.Answer(){Description = "Başbakanlık",IsCorrect = false},
+                    new Models.Answer(){Description = "Cumhurbaşkanlığı",IsCorrect = true},
+                    new Models.Answer(){Description = "Maliye Bakanlığı",IsCorrect = false},
                 }
             });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Soğuk Savaş'ta hangi iki ülke birbiriyle mücadele etti?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Amerika-SSCB",IsCorrect = true},
+                    new Models.Answer(){Description = "SSCB-Kanada",IsCorrect = false},
+                    new Models.Answer(){Description = "Amerika-Almanya",IsCorrect = false},
+                    new Models.Answer(){Description = "Japonya-Amerika",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Avrupa Parlamentosu hangi şehirde bulunuyor?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Münih ",IsCorrect = false},
+                    new Models.Answer(){Description = "Zürih ",IsCorrect = false},
+                    new Models.Answer(){Description = "Lyon ",IsCorrect = false},
+                    new Models.Answer(){Description = "Strasburg ",IsCorrect = true},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "II.Dünya Savaşında en çok vatandaşı ölen ülke hangisidir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "İngiltere",IsCorrect = false},
+                    new Models.Answer(){Description = "Almanya",IsCorrect = false},
+                    new Models.Answer(){Description = "Fransa",IsCorrect = false},
+                    new Models.Answer(){Description = "Sovyetler Birliği",IsCorrect = true},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Olimpiyat bayrağındaki 5 halka neyi ifade eder?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "5 ülkeyi",IsCorrect = false},
+                    new Models.Answer(){Description = "Avrupa Birliğini",IsCorrect = false},
+                    new Models.Answer(){Description = "5 Kıtayı",IsCorrect = true},
+                    new Models.Answer(){Description = "5 kurucuyu",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Havayı oluşturan iki temel madde nelerdir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Oksijen-Nitrojen",IsCorrect = true},
+                    new Models.Answer(){Description = "Oksijen-Azot",IsCorrect = false},
+                    new Models.Answer(){Description = "Oksiyen-Karbondioksit",IsCorrect = false},
+                    new Models.Answer(){Description = "Azot-Karbondioksit",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Röntgen ışınlarından hangi metal korunma sağlar?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Bakır ",IsCorrect = true},
+                    new Models.Answer(){Description = "Bor ",IsCorrect = false},
+                    new Models.Answer(){Description = "Molibdenit ",IsCorrect = false},
+                    new Models.Answer(){Description = "Kurşun",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Yeniçeri Ocağı`nı kaldırıp yerine düzenli bir ordu kuran Osmanlı padişahı kimdir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "II.Mahmud",IsCorrect = true},
+                    new Models.Answer(){Description = "I.Abdülhamit",IsCorrect = false},
+                    new Models.Answer(){Description = "Sultan Reşat",IsCorrect = false},
+                    new Models.Answer(){Description = "IV.Murad",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Türkiye İş Bankası hangi yıl kurulmuştur?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "1920 ",IsCorrect = false},
+                    new Models.Answer(){Description = "1924 ",IsCorrect = true},
+                    new Models.Answer(){Description = "1930 ",IsCorrect = false},
+                    new Models.Answer(){Description = "1927",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Hong Kong`a 100 yıl boyunca sahip olup daha sonra Çin`e devreden ülke hangisidir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Almanya",IsCorrect = false},
+                    new Models.Answer(){Description = "Fransa",IsCorrect = false},
+                    new Models.Answer(){Description = "ABD",IsCorrect = false},
+                    new Models.Answer(){Description = "İngiltere",IsCorrect = true},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Varna Savaşı kaç yılında yapılmıştır?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "1244",IsCorrect = false},
+                    new Models.Answer(){Description = "1444",IsCorrect = true},
+                    new Models.Answer(){Description = "1440",IsCorrect = false},
+                    new Models.Answer(){Description = "1144",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Deniz kuvvetlerimizdeki Büyükamiral rütbesinin Kara Kuvvetlerimizdeki karşılığı nedir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Tümgeneral ",IsCorrect = false},
+                    new Models.Answer(){Description = "Orgeneral ",IsCorrect = false},
+                    new Models.Answer(){Description = "Korgeneral ",IsCorrect = false},
+                    new Models.Answer(){Description = "Mareşal",IsCorrect = true},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Müslümanların Mekkelilere karşı kazandıkları ilk savaş aşağıdakilerden hangisidir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Uhud Savaşı",IsCorrect = false},
+                    new Models.Answer(){Description = "Heyber Savaşı",IsCorrect = false},
+                    new Models.Answer(){Description = "Hendek Savaşı",IsCorrect = false},
+                    new Models.Answer(){Description = "Bedir Savaşı",IsCorrect = true},
+                }
+            });
+
         }
 
         public void ClearDatabase()
