@@ -30,6 +30,8 @@ namespace QuizTest.Views
             question = _game.CurrentQuestionAnswerViewModel().Question;
             Timer(question.Time);
             ComponentLoad();
+            //this.ScaleTo(2, 1000, Easing.SpringIn);
+            //this.ScaleTo(1, 1000, Easing.SpringOut);
         }
 
         private void ComponentLoad()
@@ -126,7 +128,6 @@ namespace QuizTest.Views
             if (button.ClassId.Equals("True"))
             {
                 button.BackgroundColor = Color.Green;
-                this.RotateTo(360, 100, Easing.BounceOut);
                 _game.ScoreAdd(question.Difficult);
                 ReGenerateButton();
                 NextPageTimer(1, true);
