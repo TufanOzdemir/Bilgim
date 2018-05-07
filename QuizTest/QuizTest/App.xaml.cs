@@ -11,7 +11,7 @@ namespace QuizTest
 {
     public partial class App : Application
     {
-IAudio _audio;
+        IAudio _audio;
         public static Color AcikTonRenk = Color.FromHex("#ecf0f1");
         public static Color HafifKoyuTonRenk = Color.FromHex("#3498db");
         public static Color KoyuTonRenk = Color.FromHex("#960FEE");
@@ -24,7 +24,7 @@ IAudio _audio;
             questionService = new QuestionService();
             answerService = new AnswerService();
             InitializeComponent();
-            ClearDatabase();
+            //ClearDatabase();
             if (questionService.GetAll().Count == 0)
             {
                 FirstInitialize();
@@ -32,7 +32,7 @@ IAudio _audio;
             MainPage = new MainPage(this);
         }
 
-  public void PlaySound(int SoundName)
+        public void PlaySound(int SoundName)
         {
             _audio = DependencyService.Get<IAudio>();
             _audio.PlayAudio(SoundName);
@@ -781,6 +781,7 @@ IAudio _audio;
 
         public void ChangePage(ContentPage contentPage)
         {
+            contentPage.RotateTo(360, 1000, Easing.SpringIn);
             MainPage = contentPage;
         }
 
