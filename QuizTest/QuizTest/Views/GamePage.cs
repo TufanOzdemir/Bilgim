@@ -127,28 +127,42 @@ namespace QuizTest.Views
 
             if (button.ClassId.Equals("True"))
             {
-                button.BackgroundColor = Color.Green;
-                _game.ScoreAdd(question.Difficult);
-                ReGenerateButton();
-                NextPageTimer(1, true);
+                GameOver(button, true);
             }
             else
             {
-                if (_game.IsDoubleAnswerJokerUsing && _game.IsDoubleAnswerJokerUsed)
+                if (_game.IsDoubleAnswerJokerUsed)
                 {
-                    _game.IsDoubleAnswerJokerUsed = true;
+                    GameOver(button, false);
+                }
+                else if (_game.IsDoubleAnswerJokerUsing)
+                {
                     button.BackgroundColor = Color.Red;
-                    _game.GameStatus = false;
-                    ReGenerateButton();
-                    NextPageTimer(1, false);
                 }
                 else
                 {
-                    button.BackgroundColor = Color.Red;
+                    GameOver(button, false);
                 }
             }
 
             _game.IsDoubleAnswerJokerUsed = _game.IsDoubleAnswerJokerUsing;
+        }
+
+        private void GameOver(Button button, bool status)
+        {
+            if (status)
+            {
+                button.BackgroundColor = Color.Green;
+                _game.ScoreAdd(question.Difficult);
+            }
+            else
+            {
+                button.BackgroundColor = Color.Red;
+                _game.GameStatus = false;
+            }
+
+            ReGenerateButton();
+            NextPageTimer(1, status);
         }
 
         private void ReGenerateButton()

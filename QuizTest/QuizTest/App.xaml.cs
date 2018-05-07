@@ -20,7 +20,7 @@ namespace QuizTest
             questionService = new QuestionService();
             answerService = new AnswerService();
             InitializeComponent();
-            //ClearDatabase();
+            ClearDatabase();
             if (questionService.GetAll().Count == 0)
             {
                 FirstInitialize();
