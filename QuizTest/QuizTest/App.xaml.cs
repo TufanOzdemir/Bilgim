@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using QuizTest.Constant;
+using QuizTest.Interface;
 using QuizTest.Services;
 using QuizTest.Views;
 using Xamarin.Forms;
@@ -8,6 +10,7 @@ namespace QuizTest
 {
     public partial class App : Application
     {
+        IAudio _audio;
         public static Color AcikTonRenk = Color.FromHex("#ecf0f1");
         public static Color HafifKoyuTonRenk = Color.FromHex("#3498db");
         public static Color KoyuTonRenk = Color.FromHex("#960FEE");
@@ -28,152 +31,171 @@ namespace QuizTest
             MainPage = new MainPage(this);
         }
 
+        public void PlaySound(int SoundName)
+        {
+            _audio = DependencyService.Get<IAudio>();
+            _audio.PlayAudio(SoundName);
+        }
+        public void StopSound()
+        {
+            _audio.StopAudio();
+        }
         private void FirstInitialize()
         {
+            //Easy Questions
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Aşağıdakilerden hangisi yukarıdadır?",
+                    Description = "Ankara Hangi Savaş Sırasında Başkent Olmuştur?",
                     Difficult = Models.QuestionDifficult.Easy,
                     Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Tren",IsCorrect = false},
-                    new Models.Answer(){Description = "Minibüs",IsCorrect = false},
-                    new Models.Answer(){Description = "Yürüyen Uçak",IsCorrect = false},
-                    new Models.Answer(){Description = "Gemi",IsCorrect = true},
+                    new Models.Answer(){Description = "Çanakkale",IsCorrect = false},
+                    new Models.Answer(){Description = "Mohaç",IsCorrect = false},
+                    new Models.Answer(){Description = "Trablusgarp",IsCorrect = true},
+                    new Models.Answer(){Description = "Mısır Fethi",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Aşağıdakilerden hangisi bir prgramlama dili değildir?",
+                    Description = "Türkiye'nin ilk Cumhurbaşkanı kimdir? ",
                     Difficult = Models.QuestionDifficult.Easy,
                     Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "C#",IsCorrect = false},
-                    new Models.Answer(){Description = "Java",IsCorrect = false},
-                    new Models.Answer(){Description = "Tizen",IsCorrect = true},
-                    new Models.Answer(){Description = "Swift",IsCorrect = false},
+                    new Models.Answer(){Description = "Mustafa Kemal Atatürk",IsCorrect = true},
+                    new Models.Answer(){Description = "Kanuni Sultan Süleyman",IsCorrect = false},
+                    new Models.Answer(){Description = "Mehmed Vahdettin",IsCorrect = false},
+                    new Models.Answer(){Description = "İsmet İnönü",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Oha lan ayı diye bağıran bir adamın o an ki duygusu nedir?",
+                    Description = "İlk atom bombası hangi kente atılmıştır?",
                     Difficult = Models.QuestionDifficult.Easy,
                     Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Sinirli",IsCorrect = true},
-                    new Models.Answer(){Description = "Gergin",IsCorrect = false},
-                    new Models.Answer(){Description = "Sakin",IsCorrect = false},
-                    new Models.Answer(){Description = "Mutsuz",IsCorrect = false},
+                    new Models.Answer(){Description = "Hiroşima",IsCorrect = true},
+                    new Models.Answer(){Description = "New York",IsCorrect = false},
+                    new Models.Answer(){Description = "Paris",IsCorrect = false},
+                    new Models.Answer(){Description = "İstanbul",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Aşağıdakilerden hangisi bir Star Wars karakteri değildir?",
-                    Difficult = Models.QuestionDifficult.Medium,
-                    Time = 45
+                    Description = "Bir yerleşim biriminin denizden yüksekliğine ne denir?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Han Solo",IsCorrect = false},
-                    new Models.Answer(){Description = "Padme",IsCorrect = false},
-                    new Models.Answer(){Description = "Palpatin",IsCorrect = false},
-                    new Models.Answer(){Description = "Alexandre",IsCorrect = true},
+                    new Models.Answer(){Description = "Metre",IsCorrect = false},
+                    new Models.Answer(){Description = "Kilometre",IsCorrect = false},
+                    new Models.Answer(){Description = "Rakım",IsCorrect = true},
+                    new Models.Answer(){Description = "Bakım",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Aşağıdakilerden hangisi outdoor sporlardandır?",
-                    Difficult = Models.QuestionDifficult.Medium,
-                    Time = 45
+                    Description = "Yazıyı bulan uygarlık hangisidir?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Squash",IsCorrect = false},
-                    new Models.Answer(){Description = "Rafting",IsCorrect = true},
-                    new Models.Answer(){Description = "Bilardo",IsCorrect = false},
-                    new Models.Answer(){Description = "Bowling",IsCorrect = false},
+                    new Models.Answer(){Description = "Lidyalılar",IsCorrect = false},
+                    new Models.Answer(){Description = "Sümerler",IsCorrect = true},
+                    new Models.Answer(){Description = "Babilliler",IsCorrect = false},
+                    new Models.Answer(){Description = "Türkler",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Ankesörlü telefonda kullanılan jetonların rengi nedir?",
-                    Difficult = Models.QuestionDifficult.Medium,
-                    Time = 45
+                    Description = "Parayı bulan ilk uygarlık hangisidir?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Kırmızı",IsCorrect = false},
-                    new Models.Answer(){Description = "Yeşil",IsCorrect = false},
-                    new Models.Answer(){Description = "Sarı",IsCorrect = true},
-                    new Models.Answer(){Description = "Mavi",IsCorrect = false},
+                    new Models.Answer(){Description = "Lidyalılar",IsCorrect = true},
+                    new Models.Answer(){Description = "Sümerler",IsCorrect = false},
+                    new Models.Answer(){Description = "Babilliler",IsCorrect = false},
+                    new Models.Answer(){Description = "Türkler",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Aşağıdakilerden hangisi uzun ömrün simgesidir?",
-                    Difficult = Models.QuestionDifficult.Hard,
-                    Time = 60
+                    Description = "Türk tarihinin en ünlü mimarı kimdir?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Papatya",IsCorrect = false},
-                    new Models.Answer(){Description = "Bıcağa Sarılmış Yılan",IsCorrect = false},
-                    new Models.Answer(){Description = "Lotus Çiçeği",IsCorrect = true},
-                    new Models.Answer(){Description = "Mediterian Suyu",IsCorrect = false},
+                    new Models.Answer(){Description = "Zaha Hadid",IsCorrect = false},
+                    new Models.Answer(){Description = "Mimar Sinan",IsCorrect = true},
+                    new Models.Answer(){Description = "Mimar Hayreddin",IsCorrect = false},
+                    new Models.Answer(){Description = "Necip Dinç",IsCorrect = false},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Hem kapı kolu hemde bahane anlamında kullanılan kelime hangisidir?",
-                    Difficult = Models.QuestionDifficult.Hard,
-                    Time = 60
+                    Description = ":Türk Medeni Kanunu hangi ülkenin medeni kanunundan esinlenerek hazırlanmıştır?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Kulp",IsCorrect = true},
-                    new Models.Answer(){Description = "Tokmak",IsCorrect = false},
-                    new Models.Answer(){Description = "Hokka",IsCorrect = false},
-                    new Models.Answer(){Description = "Mandal",IsCorrect = false},
+                    new Models.Answer(){Description = "Almanya",IsCorrect = false},
+                    new Models.Answer(){Description = "Danimarka",IsCorrect = false},
+                    new Models.Answer(){Description = "Hollanda",IsCorrect = false},
+                    new Models.Answer(){Description = "İsviçre",IsCorrect = true},
                 }
             });
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
                 {
-                    Description = "Dilimize fransızcadan geçen ve bir tiyatroterimi ile bir tatlı ismi olarak kullanılan kelime hangisidir?",
-                    Difficult = Models.QuestionDifficult.Hard,
-                    Time = 60
+                    Description = "Hababam Sınıfı Filminde “İnek Şaban” karakterini canlandıran sanatçı kimdir?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
                 },
                 AnswerList = new List<Models.Answer>()
                 {
-                    new Models.Answer(){Description = "Turta",IsCorrect = false},
-                    new Models.Answer(){Description = "Sufle",IsCorrect = true},
-                    new Models.Answer(){Description = "Gofret",IsCorrect = false},
-                    new Models.Answer(){Description = "Pafye",IsCorrect = false},
+                    new Models.Answer(){Description = "Halit Akçatepe",IsCorrect = false},
+                    new Models.Answer(){Description = "Ediz Hun",IsCorrect = false},
+                    new Models.Answer(){Description = "Kemal Sunal",IsCorrect = true},
+                    new Models.Answer(){Description = "Tarık Akan ",IsCorrect = false},
                 }
             });
+            //25.soruda kaldın
+
+
+
+
+
+
+
+
         }
 
         public void ClearDatabase()

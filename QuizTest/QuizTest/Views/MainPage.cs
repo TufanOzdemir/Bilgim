@@ -1,4 +1,5 @@
 ﻿using QuizTest.Constant;
+using QuizTest.Interface;
 using QuizTest.Services;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace QuizTest.Views
 {
     public class MainPage : ContentPage
     {
+        IAudio _audio;
         Button _button;
         GameService _gameService;
         App app;
@@ -18,6 +20,7 @@ namespace QuizTest.Views
             this.app = app;
             BackgroundColor = App.CokKoyuTonRenk;
             _gameService = new GameService();
+            _audio = DependencyService.Get<IAudio>();
             ComponentLoad();
         }
 
@@ -31,6 +34,7 @@ namespace QuizTest.Views
 
         private async void StartGame(object obj)
         {
+            _audio.PlayAudio((int)SoundEnum.WinSound);
             Game game = _gameService.StartNewGame();
             var width = Application.Current.MainPage.Width;
             var storyboard = new Animation();
