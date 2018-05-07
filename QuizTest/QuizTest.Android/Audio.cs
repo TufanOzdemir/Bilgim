@@ -25,16 +25,20 @@ namespace QuizTest.Droid
         public bool PlayAudio(int SoundName)
         {
             bool result;
-            _mediaPlayer = MediaPlayer.Create(global::Android.App.Application.Context,SoundName);
-            _mediaPlayer.Start();
+            
+            
             if(SoundName.Equals(Resource.Raw.timeSound))
             {
+                _mediaPlayer = MediaPlayer.Create(global::Android.App.Application.Context, SoundName);
                 _mediaPlayer.Looping = true;
+                _mediaPlayer.Start();
                 result = true;
             }
             if (SoundName.Equals(Resource.Raw.winSound))
             {
+                _mediaPlayer = MediaPlayer.Create(global::Android.App.Application.Context, SoundName);
                 _mediaPlayer.Looping = false;
+                _mediaPlayer.Start();
                 result = true;
             }
             else
@@ -46,6 +50,7 @@ namespace QuizTest.Droid
         public void StopAudio()
         {
             _mediaPlayer.Stop();
+            _mediaPlayer.Dispose();
         }
     }
 }

@@ -162,7 +162,7 @@ namespace QuizTest.Views
                 button.BackgroundColor = Color.Red;
                 _game.GameStatus = false;
             }
-
+            _app.StopSound();
             ReGenerateButton();
             NextPageTimer(1, status);
         }
