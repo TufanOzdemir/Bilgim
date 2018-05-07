@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using QuizTest.Constant;
 using QuizTest.Interface;
+
 using QuizTest.Services;
 using QuizTest.Views;
 using Xamarin.Forms;
@@ -10,7 +11,7 @@ namespace QuizTest
 {
     public partial class App : Application
     {
-        IAudio _audio;
+IAudio _audio;
         public static Color AcikTonRenk = Color.FromHex("#ecf0f1");
         public static Color HafifKoyuTonRenk = Color.FromHex("#3498db");
         public static Color KoyuTonRenk = Color.FromHex("#960FEE");
@@ -23,7 +24,7 @@ namespace QuizTest
             questionService = new QuestionService();
             answerService = new AnswerService();
             InitializeComponent();
-            //ClearDatabase();
+            ClearDatabase();
             if (questionService.GetAll().Count == 0)
             {
                 FirstInitialize();
@@ -31,7 +32,7 @@ namespace QuizTest
             MainPage = new MainPage(this);
         }
 
-        public void PlaySound(int SoundName)
+  public void PlaySound(int SoundName)
         {
             _audio = DependencyService.Get<IAudio>();
             _audio.PlayAudio(SoundName);
@@ -40,9 +41,10 @@ namespace QuizTest
         {
             _audio.StopAudio();
         }
+
         private void FirstInitialize()
         {
-            //Easy Questions
+            //Kolay Sorular
             questionService.Create(new ViewModel.QuestionAnswerViewModel()
             {
                 Question = new Models.Question()
@@ -63,7 +65,7 @@ namespace QuizTest
             {
                 Question = new Models.Question()
                 {
-                    Description = "Türkiye'nin ilk Cumhurbaşkanı kimdir? ",
+                    Description = "Türkiye'nin ilk Cumhurbaşkanı kimdir?",
                     Difficult = Models.QuestionDifficult.Easy,
                     Time = 30
                 },
@@ -111,7 +113,7 @@ namespace QuizTest
             {
                 Question = new Models.Question()
                 {
-                    Description = "Yazıyı bulan uygarlık hangisidir?",
+                    Description = "Ilk yazıyı bulan uygarlık hangisidir?",
                     Difficult = Models.QuestionDifficult.Easy,
                     Time = 30
                 },
@@ -127,7 +129,7 @@ namespace QuizTest
             {
                 Question = new Models.Question()
                 {
-                    Description = "Parayı bulan ilk uygarlık hangisidir?",
+                    Description = "Parayı bulan ilk uygarlık hangisidir?",
                     Difficult = Models.QuestionDifficult.Easy,
                     Time = 30
                 },
@@ -159,7 +161,7 @@ namespace QuizTest
             {
                 Question = new Models.Question()
                 {
-                    Description = ":Türk Medeni Kanunu hangi ülkenin medeni kanunundan esinlenerek hazırlanmıştır?",
+                    Description = "Türk Medeni Kanunu hangi ülkenin medeni kanunundan esinlenerek hazırlanmıştır?",
                     Difficult = Models.QuestionDifficult.Easy,
                     Time = 30
                 },
@@ -184,18 +186,398 @@ namespace QuizTest
                     new Models.Answer(){Description = "Halit Akçatepe",IsCorrect = false},
                     new Models.Answer(){Description = "Ediz Hun",IsCorrect = false},
                     new Models.Answer(){Description = "Kemal Sunal",IsCorrect = true},
-                    new Models.Answer(){Description = "Tarık Akan ",IsCorrect = false},
+                    new Models.Answer(){Description = "Tarık Akan ",IsCorrect = false},
                 }
             });
-            //25.soruda kaldın
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Bulgaristan’ın başkenti neresidir?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Sofya",IsCorrect = true},
+                    new Models.Answer(){Description = "Tahran",IsCorrect = false},
+                    new Models.Answer(){Description = "Atina",IsCorrect = false},
+                    new Models.Answer(){Description = "Erivan",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Devlet Su İşleri Genel Müdürlüğü hangi bakanlığımıza bağlıdır?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Turizm Bakanlığı",IsCorrect = false},
+                    new Models.Answer(){Description = "İçişleri Bakanlığı",IsCorrect = false},
+                    new Models.Answer(){Description = "Çevre ve Orman Bakanlığı",IsCorrect = true},
+                    new Models.Answer(){Description = "Bayındırlık ve İskan Bakanlığı",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Mimar Sinan’ın Ustalık Dönemi eseri sayılan Edirne’deki eserinin adı nedir?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Selimiye",IsCorrect = true},
+                    new Models.Answer(){Description = "Sultan Ahmet",IsCorrect = false},
+                    new Models.Answer(){Description = "Aya Sofya",IsCorrect = false},
+                    new Models.Answer(){Description = "Topkapı Sarayı",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Yeni Türk Lira’sındaki “Yeni” sözcüğü hangi tarihte atılmıştır?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "01.01.2006",IsCorrect = false},
+                    new Models.Answer(){Description = "01.01.2007",IsCorrect = false},
+                    new Models.Answer(){Description = "12.12.2008",IsCorrect = false},
+                    new Models.Answer(){Description = "01.01.2009",IsCorrect = true},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Dünya Ekonomik Forumu yıllık olağan toplantısı hangi ülkede yapılmıştır?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "İngiltere",IsCorrect = false},
+                    new Models.Answer(){Description = "Almanya",IsCorrect = false},
+                    new Models.Answer(){Description = "İsviçre",IsCorrect = true},
+                    new Models.Answer(){Description = "Fransa",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Turizm ve Kültür Bakanlığı ve UNESCO’nun işbirliği ile  2009 yılını ne yılı ilan edilmiştir?",
+                    Difficult = Models.QuestionDifficult.Easy,
+                    Time = 30
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Kaşgarlı Mahmut",IsCorrect = false},
+                    new Models.Answer(){Description = "Mevlana Celaleddin Rumi",IsCorrect = false},
+                    new Models.Answer(){Description = "Katip Çelebi- Hacı Bektaşi Veli",IsCorrect = true},
+                    new Models.Answer(){Description = "Yahya Kemal Beyatlı",IsCorrect = false},
+                }
+            });
+
+            //Orta Sorular
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Aşağıdakilerden hangisi outdoor sporlardandır?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Squash",IsCorrect = false},
+                    new Models.Answer(){Description = "Rafting",IsCorrect = true},
+                    new Models.Answer(){Description = "Bilardo",IsCorrect = false},
+                    new Models.Answer(){Description = "Bowling",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Ankesörlü telefonda kullanılan jetonların rengi nedir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Kırmızı",IsCorrect = false},
+                    new Models.Answer(){Description = "Yeşil",IsCorrect = false},
+                    new Models.Answer(){Description = "Sarı",IsCorrect = true},
+                    new Models.Answer(){Description = "Mavi",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "“Sinekli Bakkal” Romanının Yazarı Aşağıdakilerden Hangisidir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Reşat Nuri Güntekin",IsCorrect = false},
+                    new Models.Answer(){Description = "Halide Edip Adıvar",IsCorrect = true},
+                    new Models.Answer(){Description = "Ziya Gökalp",IsCorrect = false},
+                    new Models.Answer(){Description = "Ömer Seyfettin",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Tsunami Felaketinde En Fazla Zarar Gören Güney Asya Ülkesi Aşağıdakilerden Hangisidir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Endonezya",IsCorrect = true},
+                    new Models.Answer(){Description = "Srilanka",IsCorrect = false},
+                    new Models.Answer(){Description = "Tayland",IsCorrect = false},
+                    new Models.Answer(){Description = "Hindistan",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "2003 Yılında Euro Vizyon Şarkı Yarışmasında Ülkemizi Temsil Eden Ve Yarışmada Birinci Gelen Sanatçımız Kimdir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Grup Athena",IsCorrect = false},
+                    new Models.Answer(){Description = "Sertap Erener",IsCorrect = true},
+                    new Models.Answer(){Description = "Şebnem Paker",IsCorrect = false},
+                    new Models.Answer(){Description = "Ajda Pekkan",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Mustafa Kemal Atatürk’ün Nüfusa Kayıtlı Olduğu İl Hangisidir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Bursa",IsCorrect = false},
+                    new Models.Answer(){Description = "Ankara",IsCorrect = false},
+                    new Models.Answer(){Description = "İstanbul",IsCorrect = false},
+                    new Models.Answer(){Description = "Gaziantep",IsCorrect = true},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Aşağıdakilerden Hangisi Dünya Sağlık Örgütünün Kısaltılmış İsmidir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Uhw",IsCorrect = false},
+                    new Models.Answer(){Description = "Unıcef",IsCorrect = false},
+                    new Models.Answer(){Description = "Who",IsCorrect = true},
+                    new Models.Answer(){Description = "Nato",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Romen Rakamında Hangi Sayı Yoktur?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "0",IsCorrect = true},
+                    new Models.Answer(){Description = "50",IsCorrect = false},
+                    new Models.Answer(){Description = "100",IsCorrect = false},
+                    new Models.Answer(){Description = "1000",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Bir Gün Kaç Saniyedir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "86000",IsCorrect = false},
+                    new Models.Answer(){Description = "88600",IsCorrect = false},
+                    new Models.Answer(){Description = "86400",IsCorrect = true},
+                    new Models.Answer(){Description = "84800",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "2010’da yapılacak olan Dünya Münazara Yarışması’na ev sahipliği yapacak olan ülke aşağıdakilerden hangisidir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Almanya",IsCorrect = false},
+                    new Models.Answer(){Description = "İngiltere",IsCorrect = false},
+                    new Models.Answer(){Description = "Türkiye",IsCorrect = true},
+                    new Models.Answer(){Description = "Yunanistan",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Avrupa Birliği'nin en fazla önemsediği,her alanda geleceğin teknolojisi olarak adlandırılan bilim dalının adı nedir ? ",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Nükleer enerji",IsCorrect = false},
+                    new Models.Answer(){Description = "Nanoteknoloji",IsCorrect = true},
+                    new Models.Answer(){Description = "Güneş enerjisi",IsCorrect = false},
+                    new Models.Answer(){Description = "Astronomi",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "UEFA Kupasını alan ilk Türk takımı hangisidir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Fenerbahçe",IsCorrect = false},
+                    new Models.Answer(){Description = "Trabzonspor",IsCorrect = false},
+                    new Models.Answer(){Description = "Beşiktaş",IsCorrect = false},
+                    new Models.Answer(){Description = "Galatasaray",IsCorrect = true},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Dünyanın ilk haritasını çizen ünlü Türk denizcisi kimdir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Piri Reis",IsCorrect = true},
+                    new Models.Answer(){Description = "Çaka Beyi",IsCorrect = false},
+                    new Models.Answer(){Description = "Fatih Sultan Süleyman",IsCorrect = false},
+                    new Models.Answer(){Description = "Picasso",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Tarihte Türk adıyla kurulan ilk Türk devleti hangisidir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Hunlar",IsCorrect = false},
+                    new Models.Answer(){Description = "Hazarlar",IsCorrect = false},
+                    new Models.Answer(){Description = "Göktürkler",IsCorrect = true},
+                    new Models.Answer(){Description = "Osmanlı Devleti",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Telefonun mucidi kimdir?",
+                    Difficult = Models.QuestionDifficult.Medium,
+                    Time = 45
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Graham Bell",IsCorrect = true},
+                    new Models.Answer(){Description = "Erikson",IsCorrect = false},
+                    new Models.Answer(){Description = "Eistein",IsCorrect = false},
+                    new Models.Answer(){Description = "Freud",IsCorrect = false},
+                }
+            });
 
 
-
-
-
-
-
-
+            //Zor Sorular
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Aşağıdakilerden hangisi uzun ömrün simgesidir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Papatya",IsCorrect = false},
+                    new Models.Answer(){Description = "Bıcağa Sarılmış Yılan",IsCorrect = false},
+                    new Models.Answer(){Description = "Lotus Çiçeği",IsCorrect = true},
+                    new Models.Answer(){Description = "Mediterian Suyu",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Hem kapı kolu hemde bahane anlamında kullanılan kelime hangisidir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Kulp",IsCorrect = true},
+                    new Models.Answer(){Description = "Tokmak",IsCorrect = false},
+                    new Models.Answer(){Description = "Hokka",IsCorrect = false},
+                    new Models.Answer(){Description = "Mandal",IsCorrect = false},
+                }
+            });
+            questionService.Create(new ViewModel.QuestionAnswerViewModel()
+            {
+                Question = new Models.Question()
+                {
+                    Description = "Dilimize fransızcadan geçen ve bir tiyatroterimi ile bir tatlı ismi olarak kullanılan kelime hangisidir?",
+                    Difficult = Models.QuestionDifficult.Hard,
+                    Time = 60
+                },
+                AnswerList = new List<Models.Answer>()
+                {
+                    new Models.Answer(){Description = "Turta",IsCorrect = false},
+                    new Models.Answer(){Description = "Sufle",IsCorrect = true},
+                    new Models.Answer(){Description = "Gofret",IsCorrect = false},
+                    new Models.Answer(){Description = "Pafye",IsCorrect = false},
+                }
+            });
         }
 
         public void ClearDatabase()

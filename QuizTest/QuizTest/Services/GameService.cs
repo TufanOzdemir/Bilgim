@@ -76,6 +76,7 @@ namespace QuizTest.Services
             game.GameStatus = true;
             game.IsDoubleAnswerJokerUsed = false;
             game.IsPercent50JokerUsed = false;
+            game.IsDoubleAnswerJokerUsing = false;
             game.IsTimeOut = false;
             game.Point = 0;
         }
