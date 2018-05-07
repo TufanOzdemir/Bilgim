@@ -55,7 +55,7 @@ namespace QuizTest.Services
                 Random random = new Random();
                 var k = GetAll();
                 var tata = k.Where(i => i.Difficult == difficulty).ToList();
-                return tata[random.Next(0, k.Count/3 - 1)];
+                return tata[random.Next(0, 14)];
             }
             catch
             {
