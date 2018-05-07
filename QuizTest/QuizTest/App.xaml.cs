@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using QuizTest.Constant;
+using QuizTest.Interface;
+
 using QuizTest.Services;
 using QuizTest.Views;
 using Xamarin.Forms;
@@ -8,6 +11,7 @@ namespace QuizTest
 {
     public partial class App : Application
     {
+IAudio _audio;
         public static Color AcikTonRenk = Color.FromHex("#ecf0f1");
         public static Color HafifKoyuTonRenk = Color.FromHex("#3498db");
         public static Color KoyuTonRenk = Color.FromHex("#960FEE");
@@ -26,6 +30,16 @@ namespace QuizTest
                 FirstInitialize();
             }
             MainPage = new MainPage(this);
+        }
+
+  public void PlaySound(int SoundName)
+        {
+            _audio = DependencyService.Get<IAudio>();
+            _audio.PlayAudio(SoundName);
+        }
+        public void StopSound()
+        {
+            _audio.StopAudio();
         }
 
         private void FirstInitialize()

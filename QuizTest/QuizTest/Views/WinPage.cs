@@ -30,7 +30,8 @@ namespace QuizTest.Views
                         {
                             Text = $"Puanınız : {_game.Point} \nTebrikler Kazandınız",
                             TextColor = App.HafifKoyuTonRenk,
-                            HorizontalTextAlignment = TextAlignment.Center
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center
                         },
                         HasShadow = true,
                         BackgroundColor = App.KoyuTonRenk
@@ -50,6 +51,7 @@ namespace QuizTest.Views
                 },
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = App.CokKoyuTonRenk
             };
         }
 

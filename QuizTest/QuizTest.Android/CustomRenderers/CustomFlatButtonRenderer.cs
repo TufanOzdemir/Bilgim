@@ -18,10 +18,7 @@ namespace QuizTest.Droid.CustomRenderers
 
             if (Control != null)
             {
-                Control.SetBackgroundColor(Android.Graphics.Color.ParseColor("#ffffff"));
-                Control.SetTextColor(Android.Graphics.Color.ParseColor("#ffffff"));
-                //
-
+                Control.SetBackgroundResource(2130837589);
             }
         }
     }

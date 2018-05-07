@@ -16,6 +16,7 @@ namespace QuizTest.Views
         Button _btnTime;
         Game _game;
         App app;
+        App _app;
         Question question;
         Grid answerGrid;
         Grid jokerGrid;
@@ -26,6 +27,7 @@ namespace QuizTest.Views
         {
             BackgroundColor = App.CokKoyuTonRenk;
             this.app = app;
+            _app = new App();
             _game = game;
             question = _game.CurrentQuestionAnswerViewModel().Question;
             Timer(question.Time);
@@ -75,10 +77,10 @@ namespace QuizTest.Views
             Button j1 = new Button() { Text = "%50", BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, IsVisible = !_game.IsPercent50JokerUsed, Margin = new Thickness(300, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
             Button j2 = new Button() { Text = "2x", BackgroundColor = App.KoyuTonRenk, TextColor = App.AcikTonRenk, IsVisible = !_game.IsDoubleAnswerJokerUsed, Margin = new Thickness(300, 0, 0, 0), WidthRequest = 40, HeightRequest = 40, CornerRadius = 20 };
 
-            Button b1 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
-            Button b2 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
-            Button b3 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[2].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[2].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
-            Button b4 = new Button() { Text = _game.CurrentQuestionAnswerViewModel().AnswerList[3].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[3].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b1 = new Button() { Text = "A ) \t\t\t\t\t\t\t\t" + _game.CurrentQuestionAnswerViewModel().AnswerList[0].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[0].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b2 = new Button() { Text = "B ) \t\t\t\t\t\t\t\t" + _game.CurrentQuestionAnswerViewModel().AnswerList[1].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[1].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b3 = new Button() { Text = "C ) \t\t\t\t\t\t\t\t" + _game.CurrentQuestionAnswerViewModel().AnswerList[2].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[2].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
+            Button b4 = new Button() { Text = "D ) \t\t\t\t\t\t\t\t" + _game.CurrentQuestionAnswerViewModel().AnswerList[3].Description, ClassId = _game.CurrentQuestionAnswerViewModel().AnswerList[3].IsCorrect.ToString(), BackgroundColor = App.AcikTonRenk, TextColor = App.KoyuTonRenk, FontSize = 10 };
 
             j1.Clicked += Percent50JokerUse;
             j2.Clicked += DoubleJokerUse;
@@ -160,7 +162,7 @@ namespace QuizTest.Views
                 button.BackgroundColor = Color.Red;
                 _game.GameStatus = false;
             }
-
+            _app.StopSound();
             ReGenerateButton();
             NextPageTimer(1, status);
         }
@@ -195,12 +197,14 @@ namespace QuizTest.Views
         {
             mainTimer = new MyTimer(TimeSpan.FromSeconds(1), TimeOut, false);
             mainTimer.StartTime(question.Time);
+            _app.PlaySound((int)SoundEnum.TimeSound);
         }
 
         private void TimeOut()
         {
             if (mainTimer.timer <= 0)
             {
+                _app.StopSound();
                 DisplayAlert("Üzgünüz..", $"Soruyu cevaplamanız için ayrılan süre bitti ! Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
                 _game.IsTimeOut = true;
                 RedirectToMainPage();

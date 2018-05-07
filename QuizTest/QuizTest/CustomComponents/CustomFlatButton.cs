@@ -4,5 +4,6 @@ namespace QuizTest.CustomComponents
 {
     public class CustomFlatButton : Button
     {
+         
     }
 }
