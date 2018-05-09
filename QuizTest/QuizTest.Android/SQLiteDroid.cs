@@ -6,6 +6,7 @@ using System.IO;
 [assembly: Xamarin.Forms.Dependency(typeof(QuizTest.Droid.SQLiteDroid))]
 namespace QuizTest.Droid
 {
+    //Veritabanı bağlantısı yapıldı.
     public class SQLiteDroid : ISQLite
     {
         public SQLiteConnection Connection()

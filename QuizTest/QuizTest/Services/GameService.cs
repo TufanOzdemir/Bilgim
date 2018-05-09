@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace QuizTest.Services
 {
+    //Oyunun yönetim işlemi için yardımcı sınıfı
     public class GameService
     {
         QuestionService _questionService;
@@ -16,6 +17,7 @@ namespace QuizTest.Services
             _answerService = new AnswerService();
         }
 
+        //Oyun için Game sınıfı düzenlendi.
         public Game StartNewGame()
         {
             game = new Game();
@@ -70,6 +72,7 @@ namespace QuizTest.Services
             return game;
         }
 
+        //Yeni oyun düzenlemesi yapıldı.
         private void FillGameProperties(Game game)
         {
             game.CurrentQuestionNumber = 0;
@@ -85,6 +88,5 @@ namespace QuizTest.Services
         {
             return StartNewGame();
         }
-
     }
 }

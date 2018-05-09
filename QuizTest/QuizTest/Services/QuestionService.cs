@@ -8,6 +8,7 @@ using System.Text;
 
 namespace QuizTest.Services
 {
+    //Soruların veritabanı işlemi için yardımcı sınıf
     public class QuestionService
     {
         DataContext<Question> _dataContext;

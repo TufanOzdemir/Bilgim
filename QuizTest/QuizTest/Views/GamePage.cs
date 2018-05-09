@@ -13,6 +13,7 @@ namespace QuizTest.Views
 {
     public class GamePage : ContentPage
     {
+        #region Global Definitions
         Button _btnTime;
         Game _game;
         App app;
@@ -22,7 +23,9 @@ namespace QuizTest.Views
         MyTimer mainTimer;
         MyTimer otherTimer;
         int questionNumber;
+        #endregion
 
+        //Yapılandırıcı üzerinden temel ayarlar yapılandırıldı.
         public GamePage(Game game, App app)
         {
             BackgroundColor = App.CokKoyuTonRenk;
@@ -36,6 +39,7 @@ namespace QuizTest.Views
             //this.ScaleTo(1, 1000, Easing.SpringOut);
         }
 
+        //Gerekli viewler yüklendi
         private void ComponentLoad()
         {
             ScrollView sw = new ScrollView();
@@ -108,6 +112,7 @@ namespace QuizTest.Views
             Content = sw;
         }
 
+        //İki cevap jokeri kullanma butonuna tıklandı.
         private void DoubleJokerUse(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -115,6 +120,7 @@ namespace QuizTest.Views
             btn.IsVisible = false;
         }
 
+        //Yüzde 50 joker kullanma butonuna tıklandı.
         private void Percent50JokerUse(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -123,6 +129,7 @@ namespace QuizTest.Views
             btn.IsVisible = false;
         }
 
+        //Cevap butonlarından herhangi birine tıklandı.
         private void CheckAnswerQuestion(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -150,6 +157,7 @@ namespace QuizTest.Views
             _game.IsDoubleAnswerJokerUsed = _game.IsDoubleAnswerJokerUsing;
         }
 
+        //Verilen cevap sonucunda yeni sayfa konfigürasyonu yapıldı.
         private void GameOver(Button button, bool status)
         {
             app.StopSound();
@@ -169,6 +177,7 @@ namespace QuizTest.Views
             NextPageTimer(0.5f, status);
         }
 
+        //Verilen cevap sonucunda buton renkleri ve aktiflikleri ayarlandı.
         private void ReGenerateButton()
         {
             foreach (Button item in answerGrid.Children)
@@ -181,6 +190,7 @@ namespace QuizTest.Views
             }
         }
 
+        //Yeni sayfaya geçmeden önceki bekletme ayarlandı.
         private void NextPageTimer(double time, bool correct)
         {
             if (correct)
@@ -195,6 +205,7 @@ namespace QuizTest.Views
             otherTimer.StartTime(time);
         }
 
+        //Ana zaman ayarlandı.
         private void Timer(double time)
         {
             mainTimer = new MyTimer(TimeSpan.FromSeconds(1), TimeOut, false);
@@ -202,6 +213,7 @@ namespace QuizTest.Views
             app.PlaySound((int)SoundEnum.TimeSound);
         }
 
+        //Ana zaman doldu.
         private void TimeOut()
         {
             if (mainTimer.timer <= 0)
@@ -217,6 +229,7 @@ namespace QuizTest.Views
             }
         }
 
+        //Kaybetme sonucu işlemler ayarlandı.
         private void LostScreen()
         {
             if (otherTimer.timer <= 0)
@@ -227,6 +240,7 @@ namespace QuizTest.Views
             }
         }
 
+        //Kazanma sonucu işlemler ayarlandı.
         private void NextScreen()
         {
             if (otherTimer.timer <= 0)
@@ -245,11 +259,13 @@ namespace QuizTest.Views
             }
         }
 
+        //Ana menüye yönlendirme işlemi yapıldı.
         private void RedirectToMainPage()
         {
             app.ChangePage(new MainPage(app));
         }
 
+        //Kazanma ekranına yönlendirme yapıldı.
         private void WinScreenOpen()
         {
             app.ChangePage(new WinPage(app, _game));

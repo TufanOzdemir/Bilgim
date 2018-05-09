@@ -5,6 +5,7 @@ using System.Text;
 
 namespace QuizTest
 {
+    //Belirtilen sayıda belirtilen listeden random eleman döndürüldü.
     public static class EnumerableExtensions
     {
         public static T PickRandom<T>(this IEnumerable<T> source)

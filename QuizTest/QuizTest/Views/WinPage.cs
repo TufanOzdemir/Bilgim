@@ -8,8 +8,12 @@ namespace QuizTest.Views
 {
     public class WinPage : ContentPage
     {
+        #region Global Definitions
         Game _game;
         App app;
+        #endregion
+
+        //Yapılandırıcı üzerinden temel ayarlar yapılandırıldı.
         public WinPage(App app, Game game)
         {
             BackgroundColor = App.CokKoyuTonRenk;
@@ -18,6 +22,7 @@ namespace QuizTest.Views
             ComponentLoad();
         }
 
+        //Gerekli viewler yüklendi.
         private void ComponentLoad()
         {
             Content = new StackLayout()
@@ -55,6 +60,7 @@ namespace QuizTest.Views
             };
         }
 
+        //Menüye yönlendirme işlemi yapıldı.
         private void MainMenu(object obj)
         {
             app.ChangePage(new MainPage(app));

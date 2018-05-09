@@ -11,6 +11,7 @@ namespace QuizTest
 {
     public partial class App : Application
     {
+        #region Global Definitions
         IAudio _audio;
         public static Color AcikTonRenk = Color.FromHex("#ecf0f1");
         public static Color HafifKoyuTonRenk = Color.FromHex("#3498db");
@@ -19,6 +20,9 @@ namespace QuizTest
 
         QuestionService questionService;
         AnswerService answerService;
+        #endregion
+
+        //Proje konfigürasyonları yapıldı.
         public App()
         {
             questionService = new QuestionService();
@@ -32,19 +36,20 @@ namespace QuizTest
             MainPage = new MainPage(this);
         }
 
+        //Belirtilen ses çalındı.
         public void PlaySound(int SoundName)
         {
             _audio = DependencyService.Get<IAudio>();
             _audio.PlayAudio(SoundName);
         }
+
+        //Tüm sesler durduruldu.
         public void StopSound()
         {
             _audio.StopAudio();
         }
-        public void WaitStopSound()
-        {
-            _audio.WaitDownandStopAudio();
-        }
+        
+        //İlk girenler için database oluşturuldu ve sorular cevaplarıyla eklendi.
         private void FirstInitialize()
         {
             //Kolay Sorular
@@ -776,12 +781,14 @@ namespace QuizTest
 
         }
 
+        //Database temizlendi.
         public void ClearDatabase()
         {
             questionService.DeleteAll();
             answerService.DeleteAll();
         }
 
+        //Sayfa değişimi navigation olmadan konfigüre edildi.
         public void ChangePage(ContentPage contentPage)
         {
             contentPage.RotateTo(360, 1000, Easing.SpringIn);

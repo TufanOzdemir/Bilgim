@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace QuizTest.Helper
 {
+    //Oyun için zamanlayıcı genel sınıfı
     public class MyTimer
     {
         private readonly TimeSpan _timespan;

@@ -8,6 +8,7 @@ using Xamarin.Forms;
 
 namespace QuizTest.Data
 {
+    //Veritabanı generic repository
     public class DataContext<T> where T : class
     {
         SQLiteConnection dbConn;

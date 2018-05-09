@@ -7,6 +7,7 @@ using System.Text;
 
 namespace QuizTest.Services
 {
+    //Cevapların veritabanı işlemi için yardımcı sınıf
     public class AnswerService
     {
         DataContext<Answer> _dataContext;
@@ -15,6 +16,7 @@ namespace QuizTest.Services
             _dataContext = new DataContext<Answer>();
         }
 
+        //Soru ID sine göre cevaplar veritabanından getirildi.
         public List<Answer> GetAnswerListByQuestionID(int questionID)
         {
             List<Answer> answerList = _dataContext.GetAll().Where(w=>w.QuestionID == questionID).ToList();

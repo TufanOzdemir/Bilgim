@@ -11,10 +11,14 @@ namespace QuizTest.Views
 {
     public class MainPage : ContentPage
     {
+        #region Global Definitions
         IAudio _audio;
         Button _button;
         GameService _gameService;
         App app;
+        #endregion
+
+        //Yapılandırıcı üzerinden temel ayarlar yapılandırıldı.
         public MainPage(App app)
         {
             this.app = app;
@@ -24,6 +28,7 @@ namespace QuizTest.Views
             ComponentLoad();
         }
 
+        //Gerekli viewler yüklendi
         private void ComponentLoad()
         {
             StackLayout sl = new StackLayout() { VerticalOptions = LayoutOptions.Center, HorizontalOptions = LayoutOptions.Center };
@@ -32,6 +37,7 @@ namespace QuizTest.Views
             Content = sl;
         }
 
+        //Oyun başlangıcı için konfigürasyon işlemi yapıldı.
         private async void StartGame(object obj)
         {
             _audio.PlayAudio((int)SoundEnum.WinSound);

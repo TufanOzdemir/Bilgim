@@ -17,7 +17,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(Audio))]
 namespace QuizTest.Droid
 {
-
+    //Ses sınıfı tanımlandı.
     public class Audio : IAudio
     {
         private MediaPlayer _mediaPlayer;
@@ -49,17 +49,6 @@ namespace QuizTest.Droid
         {
             if (_mediaPlayer != null)
             {
-                _mediaPlayer.Stop();
-                _mediaPlayer.Dispose();
-            }
-        }
-        public void WaitDownandStopAudio()
-        {
-            if (_mediaPlayer != null)
-            {
-                while (_mediaPlayer.IsPlaying)
-                {
-                }
                 _mediaPlayer.Stop();
                 _mediaPlayer.Dispose();
             }
