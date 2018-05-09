@@ -27,9 +27,9 @@ namespace QuizTest.Droid
             bool result;
             try
             {
-                result = SoundName.Equals(Resource.Raw.timeSound) || 
-                    SoundName.Equals(Resource.Raw.winSound) || 
-                    SoundName.Equals(Resource.Raw.Check) || 
+                result = SoundName.Equals(Resource.Raw.timeSound) ||
+                    SoundName.Equals(Resource.Raw.winSound) ||
+                    SoundName.Equals(Resource.Raw.Check) ||
                     SoundName.Equals(Resource.Raw.Fail);
 
                 if (result)
@@ -47,8 +47,22 @@ namespace QuizTest.Droid
         }
         public void StopAudio()
         {
-            _mediaPlayer.Stop();
-            _mediaPlayer.Dispose();
+            if (_mediaPlayer != null)
+            {
+                _mediaPlayer.Stop();
+                _mediaPlayer.Dispose();
+            }
+        }
+        public void WaitDownandStopAudio()
+        {
+            if (_mediaPlayer != null)
+            {
+                while (_mediaPlayer.IsPlaying)
+                {
+                }
+                _mediaPlayer.Stop();
+                _mediaPlayer.Dispose();
+            }
         }
     }
 }

@@ -41,7 +41,10 @@ namespace QuizTest
         {
             _audio.StopAudio();
         }
-
+        public void WaitStopSound()
+        {
+            _audio.WaitDownandStopAudio();
+        }
         private void FirstInitialize()
         {
             //Kolay Sorular

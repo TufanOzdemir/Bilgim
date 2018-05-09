@@ -8,5 +8,6 @@ namespace QuizTest.Interface
     {
         bool PlayAudio(int SoundName);
         void StopAudio();
+        void WaitDownandStopAudio();
     }
 }

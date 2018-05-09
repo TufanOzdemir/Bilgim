@@ -152,6 +152,7 @@ namespace QuizTest.Views
 
         private void GameOver(Button button, bool status)
         {
+            app.StopSound();
             if (status)
             {
                 app.PlaySound((int)SoundEnum.Check);
@@ -164,7 +165,6 @@ namespace QuizTest.Views
                 button.BackgroundColor = Color.Red;
                 _game.GameStatus = false;
             }
-            app.StopSound();
             ReGenerateButton();
             NextPageTimer(0.5f, status);
         }
@@ -221,6 +221,7 @@ namespace QuizTest.Views
         {
             if (otherTimer.timer <= 0)
             {
+                app.StopSound();
                 DisplayAlert("Üzgünüz", $"Kaybettiniz. Skorunuz : {_game.Point}", "Tamam");
                 RedirectToMainPage();
             }
@@ -230,6 +231,7 @@ namespace QuizTest.Views
         {
             if (otherTimer.timer <= 0)
             {
+                app.StopSound();
                 _game.CurrentQuestionNumber++;
                 _game.NextTour();
                 if (_game.GameStatus)
