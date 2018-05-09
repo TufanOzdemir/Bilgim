@@ -25,23 +25,21 @@ namespace QuizTest.Droid
         public bool PlayAudio(int SoundName)
         {
             bool result;
-            
-            
-            if(SoundName.Equals(Resource.Raw.timeSound))
+            try
             {
-                _mediaPlayer = MediaPlayer.Create(global::Android.App.Application.Context, SoundName);
-                _mediaPlayer.Looping = true;
-                _mediaPlayer.Start();
-                result = true;
+                result = SoundName.Equals(Resource.Raw.timeSound) || 
+                    SoundName.Equals(Resource.Raw.winSound) || 
+                    SoundName.Equals(Resource.Raw.Check) || 
+                    SoundName.Equals(Resource.Raw.Fail);
+
+                if (result)
+                {
+                    _mediaPlayer = MediaPlayer.Create(global::Android.App.Application.Context, SoundName);
+                    _mediaPlayer.Looping = SoundName.Equals(Resource.Raw.timeSound);
+                    _mediaPlayer.Start();
+                }
             }
-            if (SoundName.Equals(Resource.Raw.winSound))
-            {
-                _mediaPlayer = MediaPlayer.Create(global::Android.App.Application.Context, SoundName);
-                _mediaPlayer.Looping = false;
-                _mediaPlayer.Start();
-                result = true;
-            }
-            else
+            catch
             {
                 result = false;
             }

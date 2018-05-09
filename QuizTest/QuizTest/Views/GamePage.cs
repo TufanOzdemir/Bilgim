@@ -154,11 +154,13 @@ namespace QuizTest.Views
         {
             if (status)
             {
+                app.PlaySound((int)SoundEnum.Check);
                 button.BackgroundColor = Color.Green;
                 _game.ScoreAdd(question.Difficult);
             }
             else
             {
+                app.PlaySound((int)SoundEnum.Fail);
                 button.BackgroundColor = Color.Red;
                 _game.GameStatus = false;
             }
