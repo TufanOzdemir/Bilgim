@@ -11,8 +11,7 @@
 namespace QuizTest {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\amoni\\OneDrive\\Belgeler\\Visual Studio 2017\\Projects\\QuizTest\\QuizTest\\Qu" +
-        "izTest\\App.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest\\App.xaml")]
     public partial class App : global::Xamarin.Forms.Application {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

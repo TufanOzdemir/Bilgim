@@ -49,6 +49,18 @@
           "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll": {}
         }
       },
+      "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.3.4.247"
+        },
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/ProgressRing.Forms.Plugin.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/ProgressRing.Forms.Plugin.dll": {}
+        }
+      },
       "Xamarin.Forms/2.5.0.280555": {
         "type": "package",
         "compile": {
@@ -237,6 +249,20 @@
         "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll",
         "sqlite.net.core-pcl.3.1.1.nupkg.sha512",
         "sqlite.net.core-pcl.nuspec"
+      ]
+    },
+    "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+      "sha512": "TqxIQo9uiq0EXPSIet8eouoF0Vs1Al30Urd++LXkH2lCQPMJzr5aCrwnCrTi9/4V229njCgUw53+Au6xWbZwHg==",
+      "type": "package",
+      "path": "xam.plugins.forms.progressring/0.1.2",
+      "files": [
+        "lib/MonoAndroid10/ProgressRing.Forms.Plugin.Android.dll",
+        "lib/MonoAndroid10/ProgressRing.Forms.Plugin.dll",
+        "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll",
+        "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll",
+        "lib/portable-net45+wp80+win8+wpa81/ProgressRing.Forms.Plugin.dll",
+        "xam.plugins.forms.progressring.0.1.2.nupkg.sha512",
+        "xam.plugins.forms.progressring.nuspec"
       ]
     },
     "Xamarin.Forms/2.5.0.280555": {
@@ -431,27 +457,28 @@
       "NETStandard.Library >= 2.0.1",
       "SQLite.Net-PCL >= 3.1.1",
       "SQLite.Net.Core-PCL >= 3.1.1",
+      "Xam.Plugins.Forms.ProgressRing >= 0.1.2",
       "Xamarin.Forms >= 2.5.0.280555"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Batu\\.nuget\\packages\\": {},
+    "C:\\Users\\amoni\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\QuizTest.csproj",
+      "projectUniqueName": "D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest\\QuizTest.csproj",
       "projectName": "QuizTest",
-      "projectPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\QuizTest.csproj",
-      "packagesPath": "C:\\Users\\Batu\\.nuget\\packages\\",
-      "outputPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\obj\\",
+      "projectPath": "D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest\\QuizTest.csproj",
+      "packagesPath": "C:\\Users\\amoni\\.nuget\\packages\\",
+      "outputPath": "D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Batu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\amoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -459,7 +486,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\Batu\\.dotnet\\NuGetFallbackFolder": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://ci.appveyor.com/nuget/solrnet-022x5w7kmuba": {}
       },
@@ -491,6 +517,10 @@
             "target": "Package",
             "version": "[3.1.1, )"
           },
+          "Xam.Plugins.Forms.ProgressRing": {
+            "target": "Package",
+            "version": "[0.1.2, )"
+          },
           "Xamarin.Forms": {
             "target": "Package",
             "version": "[2.5.0.280555, )"
@@ -509,7 +539,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "'SQLite.Net-PCL 3.1.1' paketi, proje hedef çerçevesi '.NETStandard,Version=v2.0' yerine '.NETFramework,Version=v4.6.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "message": "Package 'SQLite.Net-PCL 3.1.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
       "libraryId": "SQLite.Net-PCL",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"
@@ -519,8 +549,18 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "'SQLite.Net.Core-PCL 3.1.1' paketi, proje hedef çerçevesi '.NETStandard,Version=v2.0' yerine '.NETFramework,Version=v4.6.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
+      "message": "Package 'SQLite.Net.Core-PCL 3.1.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
       "libraryId": "SQLite.Net.Core-PCL",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Xam.Plugins.Forms.ProgressRing 0.1.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Xam.Plugins.Forms.ProgressRing",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"
       ]

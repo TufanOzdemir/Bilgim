@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "bb358225036bcb41205cb354c816611798a9064a"
+    "signature": "e8a994ef31f496f7e9bdcb1c6d32ed13c3b5b613"
   },
   "compilationOptions": {},
   "targets": {
@@ -12,6 +12,7 @@
           "NETStandard.Library": "2.0.1",
           "SQLite.Net-PCL": "3.1.1",
           "SQLite.Net.Core-PCL": "3.1.1",
+          "Xam.Plugins.Forms.ProgressRing": "0.1.2",
           "Xamarin.Forms": "2.5.0.280555"
         },
         "runtime": {
@@ -36,6 +37,14 @@
       "SQLite.Net.Core-PCL/3.1.1": {
         "runtime": {
           "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll": {}
+        }
+      },
+      "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+        "dependencies": {
+          "Xamarin.Forms": "2.5.0.280555"
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/ProgressRing.Forms.Plugin.dll": {}
         }
       },
       "Xamarin.Forms/2.5.0.280555": {
@@ -80,6 +89,13 @@
       "sha512": "sha512-/0VdXnyj2srEh5rM1RW/snXJrVGRsxGB3xjW4EkhZIig9N/8EocZZrEr0vwRJU8a9Lz4BrweoLyKwp2evmSIzg==",
       "path": "sqlite.net.core-pcl/3.1.1",
       "hashPath": "sqlite.net.core-pcl.3.1.1.nupkg.sha512"
+    },
+    "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TqxIQo9uiq0EXPSIet8eouoF0Vs1Al30Urd++LXkH2lCQPMJzr5aCrwnCrTi9/4V229njCgUw53+Au6xWbZwHg==",
+      "path": "xam.plugins.forms.progressring/0.1.2",
+      "hashPath": "xam.plugins.forms.progressring.0.1.2.nupkg.sha512"
     },
     "Xamarin.Forms/2.5.0.280555": {
       "type": "package",

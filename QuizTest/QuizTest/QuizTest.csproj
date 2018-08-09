@@ -29,4 +29,9 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CustomComponents\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

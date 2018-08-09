@@ -7,3 +7,13 @@ c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\Q
 c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\bin\Debug\netstandard2.0\QuizTest.pdb
 c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.dll
 c:\users\amoni\onedrive\belgeler\visual studio 2017\Projects\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.pdb
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\bin\Debug\netstandard2.0\QuizTest.deps.json
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\bin\Debug\netstandard2.0\QuizTest.dll
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\bin\Debug\netstandard2.0\QuizTest.pdb
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.csprojAssemblyReference.cache
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.csproj.CoreCompileInputs.cache
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.App.xaml.g.cs
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.AssemblyInfoInputs.cache
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.AssemblyInfo.cs
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.dll
+D:\Program çalışmaları\Xamarin\QuizTest\QuizTest\QuizTest\obj\Debug\netstandard2.0\QuizTest.pdb

@@ -108,6 +108,8 @@ class MonoPackageManager_Resources {
 		/* We need to ensure that "QuizTest.Android.dll" comes first in this list. */
 		"QuizTest.Android.dll",
 		"FormsViewGroup.dll",
+		"ProgressRing.Forms.Plugin.Android.dll",
+		"ProgressRing.Forms.Plugin.dll",
 		"QuizTest.dll",
 		"SQLite.Net.dll",
 		"SQLite.Net.Platform.XamarinAndroid.dll",

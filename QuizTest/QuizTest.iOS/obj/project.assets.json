@@ -23,6 +23,20 @@
           "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll": {}
         }
       },
+      "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.3.4.247"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll": {},
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll": {},
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll": {}
+        }
+      },
       "Xamarin.Forms/2.5.0.280555": {
         "type": "package",
         "compile": {
@@ -152,6 +166,7 @@
         "dependencies": {
           "SQLite.Net-PCL": "3.1.1",
           "SQLite.Net.Core-PCL": "3.1.1",
+          "Xam.Plugins.Forms.ProgressRing": "0.1.2",
           "Xamarin.Forms": "2.5.0.280555"
         },
         "compile": {
@@ -184,6 +199,20 @@
           "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll": {}
         }
       },
+      "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.3.4.247"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll": {},
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll": {},
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll": {}
+        }
+      },
       "Xamarin.Forms/2.5.0.280555": {
         "type": "package",
         "compile": {
@@ -313,6 +342,7 @@
         "dependencies": {
           "SQLite.Net-PCL": "3.1.1",
           "SQLite.Net.Core-PCL": "3.1.1",
+          "Xam.Plugins.Forms.ProgressRing": "0.1.2",
           "Xamarin.Forms": "2.5.0.280555"
         },
         "compile": {
@@ -345,6 +375,20 @@
           "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll": {}
         }
       },
+      "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.3.4.247"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll": {},
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll": {},
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll": {}
+        }
+      },
       "Xamarin.Forms/2.5.0.280555": {
         "type": "package",
         "compile": {
@@ -474,6 +518,7 @@
         "dependencies": {
           "SQLite.Net-PCL": "3.1.1",
           "SQLite.Net.Core-PCL": "3.1.1",
+          "Xam.Plugins.Forms.ProgressRing": "0.1.2",
           "Xamarin.Forms": "2.5.0.280555"
         },
         "compile": {
@@ -506,6 +551,20 @@
           "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll": {}
         }
       },
+      "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "2.3.4.247"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll": {},
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll": {},
+          "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll": {}
+        }
+      },
       "Xamarin.Forms/2.5.0.280555": {
         "type": "package",
         "compile": {
@@ -635,6 +694,7 @@
         "dependencies": {
           "SQLite.Net-PCL": "3.1.1",
           "SQLite.Net.Core-PCL": "3.1.1",
+          "Xam.Plugins.Forms.ProgressRing": "0.1.2",
           "Xamarin.Forms": "2.5.0.280555"
         },
         "compile": {
@@ -674,6 +734,20 @@
         "lib/portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1/SQLite.Net.dll",
         "sqlite.net.core-pcl.3.1.1.nupkg.sha512",
         "sqlite.net.core-pcl.nuspec"
+      ]
+    },
+    "Xam.Plugins.Forms.ProgressRing/0.1.2": {
+      "sha512": "TqxIQo9uiq0EXPSIet8eouoF0Vs1Al30Urd++LXkH2lCQPMJzr5aCrwnCrTi9/4V229njCgUw53+Au6xWbZwHg==",
+      "type": "package",
+      "path": "xam.plugins.forms.progressring/0.1.2",
+      "files": [
+        "lib/MonoAndroid10/ProgressRing.Forms.Plugin.Android.dll",
+        "lib/MonoAndroid10/ProgressRing.Forms.Plugin.dll",
+        "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.dll",
+        "lib/Xamarin.iOS10/ProgressRing.Forms.Plugin.iOS.dll",
+        "lib/portable-net45+wp80+win8+wpa81/ProgressRing.Forms.Plugin.dll",
+        "xam.plugins.forms.progressring.0.1.2.nupkg.sha512",
+        "xam.plugins.forms.progressring.nuspec"
       ]
     },
     "Xamarin.Forms/2.5.0.280555": {
@@ -877,20 +951,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Batu\\.nuget\\packages\\": {}
+    "C:\\Users\\amoni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest.iOS\\QuizTest.iOS.csproj",
+      "projectUniqueName": "D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest.iOS\\QuizTest.iOS.csproj",
       "projectName": "QuizTest.iOS",
-      "projectPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest.iOS\\QuizTest.iOS.csproj",
-      "packagesPath": "C:\\Users\\Batu\\.nuget\\packages\\",
-      "outputPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest.iOS\\obj\\",
+      "projectPath": "D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest.iOS\\QuizTest.iOS.csproj",
+      "packagesPath": "C:\\Users\\amoni\\.nuget\\packages\\",
+      "outputPath": "D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Batu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\amoni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -898,15 +972,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\Batu\\.dotnet\\NuGetFallbackFolder": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://ci.appveyor.com/nuget/solrnet-022x5w7kmuba": {}
       },
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\QuizTest.csproj": {
-              "projectPath": "C:\\2017 Github Repo\\Bilgim\\QuizTest\\QuizTest\\QuizTest.csproj"
+            "D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest\\QuizTest.csproj": {
+              "projectPath": "D:\\Program çalışmaları\\Xamarin\\QuizTest\\QuizTest\\QuizTest\\QuizTest.csproj"
             }
           }
         }

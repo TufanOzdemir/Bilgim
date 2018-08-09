@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.QuizTest">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.ebirdsoftware.QuizTest" android:installLocation="preferExternal">
   <!--suppress UsesMinSdkAttributes-->
   <uses-sdk android:minSdkVersion="15" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <application android:label="QuizTest.Android" android:name="android.app.Application" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
-    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="QuizTest" android:theme="@style/MainTheme" android:name="md597383818a7dd2584519f329e65b43bb1.MainActivity">
+  <application android:label="Bilgi Yarışması" android:name="android.app.Application" android:allowBackup="true" android:icon="@drawable/icon" android:debuggable="true">
+    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="QuizTest" android:theme="@style/MainTheme" android:name="md5f5e9bba527ee4c02cfb4c5d2e4ee8d16.MainActivity" />
+    <activity android:noHistory="true" android:theme="@style/Theme.Splash" android:name="md5f5e9bba527ee4c02cfb4c5d2e4ee8d16.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.QuizTest.mono.MonoRuntimeProvider.__mono_init__" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.ebirdsoftware.QuizTest.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->
     <receiver android:name="mono.android.Seppuku">
       <intent-filter>
         <action android:name="mono.android.intent.action.SEPPUKU" />
-        <category android:name="mono.android.intent.category.SEPPUKU.com.companyname.QuizTest" />
+        <category android:name="mono.android.intent.category.SEPPUKU.com.ebirdsoftware.QuizTest" />
       </intent-filter>
     </receiver>
     <meta-data android:name="android.support.VERSION" android:value="25.4.0" />
